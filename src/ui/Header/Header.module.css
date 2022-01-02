@@ -1,0 +1,121 @@
+* {
+    box-sizing: border-box;
+}
+
+.header {
+    height: 3rem;
+    position: fixed;
+    width: 100vw;
+    left: 0;
+    top: 0;
+    background: black;
+    z-index: 20;
+}
+
+.nav {
+    display: grid;
+    width: 100%;
+    height: 100%;
+    grid-template-columns: 1fr 3fr 1fr;
+    align-items: center;
+    justify-items: center;
+}
+
+.title {
+    display:flex;
+    justify-content: center;
+    align-items: center;
+    grid-column: 2;
+}
+
+
+.mealsParagraph {
+    color: white;
+    font-weight: bold;
+    font-size: 1.4rem;
+    margin: 0 0.35rem 0 0;
+}
+
+.logo {
+    height: auto;
+    width: auto;
+    max-width: 2rem;
+    margin-bottom: 3px;
+}
+
+.plannerParagraph {
+    color: white;
+    font-weight: bold;
+    font-size: 1.4rem;
+    margin: 0 0 0 0.3rem;
+}
+
+.listContainer {
+    display: none;
+}
+
+
+
+@media (min-width: 700px) and (hover) {
+    .header {
+        height: 4rem;
+    }
+
+    .nav {
+        display: grid;
+        width: 100%;
+        height: 100%;
+        grid-template-columns: 1.3fr 2fr 3fr;
+        align-items: center;
+        justify-items: center;
+    }
+
+    .title {
+        grid-column: 1;
+        justify-content: flex-start;
+    }
+
+    .listContainer {
+        grid-column: 3;
+        display: flex;
+        justify-content: space-around;
+        justify-self: flex-end;
+    }
+
+    .navigationList {
+        color: white;
+        list-style: none;
+        display: flex;
+        justify-content: space-around;
+        padding: 0;
+        margin: 0 1rem;
+    }
+
+    .navigationListItem {
+        font-size: 1.4rem;
+        margin: 0 1rem;
+        transition: transform 250ms ease;
+    }
+
+    .navigationListItem::after {
+        content: '';
+        position: absolute;
+        display:inline;
+        height: 1px;
+        left: 0;
+        bottom: -1px;
+        width: 100%;
+        background: white;
+        transform: scaleX(0);
+        transition: transform 250ms ease;
+    }
+
+    .navigationListItem:hover {
+        transform: scale(1.1);
+    }
+
+    .navigationListItem:hover::after {
+        transform: scaleX(1);
+    }
+}
+

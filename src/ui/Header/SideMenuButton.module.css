@@ -1,0 +1,23 @@
+.burgerMenu {
+    box-sizing: border-box;
+    display: flex;
+    flex-direction: column;
+    height: 1.5rem;
+    width: 1.8rem;
+    cursor: pointer;
+    padding: 0;
+    justify-content: space-around;
+}
+
+.burgerMenu div {
+    color: black;
+    width: 1.8rem;
+    height: 0.2rem;
+    background: white;
+}
+
+@media (min-width: 700px) {
+    .burgerMenu {
+        display: none;
+    }
+}

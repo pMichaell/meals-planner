@@ -37,8 +37,9 @@
 }
 
 .sideMenuItem a {
-    color: white;
-    text-decoration: none;
+    background: linear-gradient(227deg, #A9C9FF 0%, #FFBBEC 100%);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
 }
 
 @media (min-width: 700px) {

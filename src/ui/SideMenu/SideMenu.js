@@ -1,10 +1,8 @@
 import classes from "./SideMenu.module.css"
 import {Fragment} from "react";
-import ReactDom from "react-dom";
 import {Link} from "react-router-dom";
 
 const SideMenu = props => {
-    const portalElement = document.getElementById("overlays");
 
     let styles = props.sideMenuVisible ? `${classes.sideMenu} ${classes.open}` : classes.sideMenu;
 

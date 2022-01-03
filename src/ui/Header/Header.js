@@ -3,6 +3,7 @@ import logo from "../../assets/apple_logo.png"
 import {Fragment, useState} from "react";
 import SideMenuButton from "./SideMenuButton";
 import SideMenu from "../SideMenu/SideMenu";
+import {Link} from "react-router-dom";
 
 const Header = () => {
     const [sideMenuVisible, setSideMenuVisible] = useState(false);
@@ -24,9 +25,9 @@ const Header = () => {
                     </div>
                     <div className={classes.listContainer}>
                     <ul className={classes.navigationList}>
-                        <li className={classes.navigationListItem}>Pricing</li>
-                        <li className={classes.navigationListItem}>Login</li>
-                        <li className={classes.navigationListItem}>Get Started</li>
+                        <li className={classes.navigationListItem}><Link to="/pricing">Pricing</Link></li>
+                        <li className={classes.navigationListItem}><Link to="/login">Login</Link></li>
+                        <li className={classes.navigationListItem}><Link to="/planner">Get Started</Link></li>
                     </ul>
                     </div>
                 </nav>

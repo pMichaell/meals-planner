@@ -36,6 +36,11 @@
     margin-top: 1rem;
 }
 
+.sideMenuItem a {
+    color: white;
+    text-decoration: none;
+}
+
 @media (min-width: 700px) {
     .sideMenu {
         display: none;

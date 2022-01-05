@@ -6,7 +6,7 @@ const Footer = () => {
     return (
         <Fragment>
             <footer className={classes.footer}>
-                <div className={classes.div}><Link to="/about">About us</Link></div>
+                <div className={classes.div}><Link className={classes.link} to="/about">About us</Link></div>
             </footer>
         </Fragment>
     )

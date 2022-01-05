@@ -1,5 +1,6 @@
 .container {
-    margin: 1.5rem 0 0 0;
+    margin: 2rem 0 2rem 0;
+    text-align: center;
 }
 
 .descriptionContainer {
@@ -15,21 +16,29 @@
     margin: 1rem 0;
 }*/
 
+.foo {
+    display: flex;
+    flex-direction: column;
+    justify-items: center;
+    align-items: center;
+}
+
 .icon {
     height: auto;
     width: auto;
-    max-width: 3rem;
+    max-width: 8vh;
 }
 
 .header {
     background: linear-gradient(227deg, #A9C9FF 0%, #FFBBEC 100%);
     -webkit-background-clip: text;
     -webkit-text-fill-color: transparent;
+    font-size: 2.5vh;
 }
 
 .cta {
     display: flex;
-    margin: 2rem 0 0 0;
+    margin: 1.5rem 0 1rem 0;
     color: white;
     height: 3rem;
     justify-content: center;
@@ -51,5 +60,19 @@
     text-decoration: none;
     color: black;
     font-size: 1.4rem;
+}
+
+@media (min-width: 700px) {
+    .icon {
+        max-width: 11vh;
+    }
+
+    .header {
+        font-size: 2rem;
+    }
+
+    .cta div {
+        width: 40%;
+    }
 }
 

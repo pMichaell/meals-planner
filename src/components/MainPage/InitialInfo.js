@@ -10,8 +10,8 @@ const InitialInfo = () => {
         <div className={classes.container}>
             <div>
                 <div className={classes.descriptionContainer}>
-                    <div>
-                        <div><img src={plan} className={classes.icon} alt="plan icon"/>
+
+                        <div className={classes.foo}><img src={plan} className={classes.icon} alt="plan icon"/>
                             <h3 className={classes.header}>Create a meals plan neatly fitting your requirements in 3
                                 easy
                                 steps!</h3>
@@ -27,7 +27,7 @@ const InitialInfo = () => {
                             <h3 className={classes.header}>Start using your new meal plan<br/>
                                 and enjoy eating like never before!</h3>
                         </div>
-                    </div>
+
                 </div>
             </div>
             <div className={classes.cta}>

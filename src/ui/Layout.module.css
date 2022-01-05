@@ -1,2 +1,13 @@
-.main {
+.content {
+    min-height: calc(100vh - 70px);
+}
+
+.headerBreak {
+   background-color: white;
+    height: 0.2rem;
+}
+
+.footerBreak {
+    background-color: white;
+    height: 0.1rem;
 }

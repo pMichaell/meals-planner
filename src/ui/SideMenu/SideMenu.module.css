@@ -32,11 +32,11 @@
     color: white;
     display: flex;
     justify-content: center;
-    text-decoration: none;
     margin-top: 1rem;
 }
 
 .sideMenuItem a {
+    text-decoration: none;
     background: linear-gradient(227deg, #A9C9FF 0%, #FFBBEC 100%);
     -webkit-background-clip: text;
     -webkit-text-fill-color: transparent;

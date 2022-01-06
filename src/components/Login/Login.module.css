@@ -1,0 +1,83 @@
+:root {
+
+}
+
+.container {
+    display: grid;
+    place-items: center;
+    height: 88vh;
+}
+
+.form {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: space-evenly;
+    width: 80%;
+    height: 90%;
+}
+
+.inputTag {
+    align-self: flex-start;
+    margin: 1rem 0 0 0;
+    background: -webkit-linear-gradient(227deg, #A9C9FF 0%, #FFBBEC 100%);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+}
+
+.input {
+    margin: 0;
+    color: white;
+    font-size: 1.2rem;
+    width: 100%;
+    height: 2.2rem;
+    outline: none;
+    background-color: black;
+}
+
+.border {
+    border: 3px solid;
+    border-image-slice: 1;
+    border-image-source: linear-gradient(227deg, #A9C9FF 0%, #FFBBEC 100%);
+}
+
+.login {
+    margin: 2rem 0 0 0;
+    background: -webkit-linear-gradient(227deg, #A9C9FF 0%, #FFBBEC 100%);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    width: 65%;
+    height: 3rem;
+    font-size: 1.5rem;
+    font-weight: bolder;
+    cursor: pointer;
+}
+
+.googleLogin {
+    margin: 1rem 0 0 0;
+    width: 68%
+}
+
+.info {
+    text-align: center;
+}
+
+.info button {
+    padding: 0.4rem;
+    display: inline;
+    font-size: 1.35rem;
+    font-weight: bold;
+    background: transparent;
+    background: -webkit-linear-gradient(227deg, #A9C9FF 0%, #FFBBEC 100%);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    width: 50%;
+    cursor: pointer;
+}
+
+.info h3{
+    margin: 1rem 0;
+    background: -webkit-linear-gradient(227deg, #A9C9FF 0%, #FFBBEC 100%);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+}

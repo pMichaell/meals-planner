@@ -12,8 +12,8 @@ const Layout = props => {
                 <div className={classes.headerBreak}/>
                 <main className={classes.main}>{props.children}</main>
                 <div className={classes.footerBreak}/>
-                <Footer/>
             </div>
+            <Footer/>
         </Fragment>
     )
 }

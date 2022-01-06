@@ -3,7 +3,9 @@
 }
 
 .footer {
-    height: 5vh;
+    clear: both;
+    height: 60px;
+    margin-top: -10px;
     background: black;
     display: grid;
     place-items: center;

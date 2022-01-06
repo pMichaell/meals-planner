@@ -3,10 +3,10 @@ import {Route, Routes} from "react-router-dom";
 import MainPage from "./pages/MainPage";
 import {Fragment} from "react";
 import LoginPage from "./pages/LoginPage";
+import Footer from "./ui/Footer/Footer";
 
 function App() {
   return (
-
       <Fragment>
         <Layout>
           <Routes>

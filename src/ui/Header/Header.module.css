@@ -6,6 +6,7 @@
     height: 3rem;
     width: 100%;
     background: black;
+    flex-shrink: 0;
 }
 
 .nav {

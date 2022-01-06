@@ -3,9 +3,8 @@
 }
 
 .footer {
-    clear: both;
+    flex-shrink: 0;
     height: 60px;
-    margin-top: -10px;
     background: black;
     display: grid;
     place-items: center;

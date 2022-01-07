@@ -15,12 +15,16 @@ const SideMenu = props => {
         dispatch(changeSideMenuState())
     }
 
+    const listItemClickHandler = () => {
+        dispatch(changeSideMenuState())
+    }
+
     return <Fragment>
         <div className={styles}>
             <ul className={classes.sideMenuList}>
-                <li className={classes.sideMenuItem}><Link to="/planner">Get Started</Link></li>
-                <li className={classes.sideMenuItem}><Link to="/login">Login</Link></li>
-                <li className={classes.sideMenuItem}><Link to="/pricing">Pricing</Link></li>
+                <li className={classes.sideMenuItem}><Link to="/planner" onClick={listItemClickHandler}>Get Started</Link></li>
+                <li className={classes.sideMenuItem}><Link to="/login" onClick={listItemClickHandler}>Login</Link></li>
+                <li className={classes.sideMenuItem}><Link to="/pricing" onClick={listItemClickHandler}>Pricing</Link></li>
             </ul>
         </div>
         {sideMenuVisible &&

@@ -2,6 +2,8 @@ import {useForm} from "react-hook-form";
 import classes from "./Login.module.css"
 import google from "../../assets/google_sign.png"
 import {useState} from "react";
+import { ErrorMessage } from '@hookform/error-message';
+import {ToastContainer} from "react-toastify";
 
 const Login = () => {
     const [isSignIn, setIsSignIn] = useState(true);
@@ -10,6 +12,8 @@ const Login = () => {
         setIsSignIn(prevState => !prevState)
         console.log(isSignIn)
     }
+
+    const regex = new RegExp("[a-z0-9!#$%&'*+/=?^_`{|}~-]+(?:\\.[a-z0-9!#$%&'*+/=?^_`{|}~-]+)*@(?:[a-z0-9](?:[a-z0-9-]*[a-z0-9])?\\.)+[a-z0-9](?:[a-z0-9-]*[a-z0-9])?");
 
     const signUpLogIn = isSignIn ? <div className={classes.info}>
         <h3>Not a member yet?</h3>
@@ -23,28 +27,42 @@ const Login = () => {
 
     const {register, handleSubmit, formState: {errors}} = useForm(
         {
+            mode: 'all',
+            criteriaMode: 'all',
             defaultValues: {
                 email: "",
                 password: ""
             }
         }
     );
-    const onSubmit = data => console.log(data);
+    const onSubmit = data => console.log(
+        data.email
+    );
 
     return (
         <div className={classes.container}>
             <form className={classes.form} onSubmit={handleSubmit(onSubmit)}>
                 <h2 className={classes.inputTag}>E-mail</h2>
                 <input
-                    className={`${classes.input} ${classes.border}`} {...register("email", {required: "Email is required"})}/>
+                    className={`${classes.input} ${classes.border}`} {...register("email", {
+                    required: "Email is required",
+                    validate: value => regex.test(value) || 'Entered email is incorrect'
+                    })}/>
+                <div className={classes.errorContainer}><ErrorMessage errors={errors} name="email"
+                                 render={({message}) => <span className={classes.errorMessage}>{message}</span>}/></div>
                 <h2 className={classes.inputTag}>Password</h2>
-                <input className={`${classes.input} ${classes.border}`} {...register("password",
+                <input type="password" className={`${classes.input} ${classes.border}`} {...register("password",
                     {
                         required: "Password is required",
-                        minLength: {value: 4, message: "Password has to be at least 6 characters long"}
+                        minLength: {value: 6, message: "Password has to be at least 6 characters long"}
                     })}
                 />
-                <button className={`${classes.login} ${classes.border}`}>{isSignIn ? `Sign in` : `Sign up`}</button>
+                <div className={classes.errorContainer}>
+                    <ErrorMessage 
+                        errors={errors} name="password"
+                        render={({message}) => <span className={classes.errorMessage}>{message}</span>}/>
+                </div>
+                <button className={`${classes.signIn} ${classes.border}`}>{isSignIn ? `Sign in` : `Sign up`}</button>
                 <img className={classes.googleLogin} src={google} alt="sign in with google"/>
                 {signUpLogIn}
                 <div className={classes.passwordRecovery}>

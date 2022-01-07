@@ -16,7 +16,7 @@
 
 .inputTag {
     align-self: flex-start;
-    margin: 1rem 0 0 0;
+    margin: 0;
     background: -webkit-linear-gradient(227deg, #A9C9FF 0%, #FFBBEC 100%);
     -webkit-background-clip: text;
     -webkit-text-fill-color: transparent;
@@ -38,8 +38,19 @@
     border-image-source: linear-gradient(227deg, #A9C9FF 0%, #FFBBEC 100%);
 }
 
-.login {
-    margin: 2rem 0 0 0;
+.errorContainer {
+    margin-top: 0.3rem;
+    align-self: flex-start;
+    height: 1.5rem;
+}
+
+.errorMessage {
+    color:white;
+    align-self: flex-start;
+}
+
+.signIn {
+    margin: 1.5rem 0 0 0;
     background: -webkit-linear-gradient(227deg, #A9C9FF 0%, #FFBBEC 100%);
     -webkit-background-clip: text;
     -webkit-text-fill-color: transparent;
@@ -99,6 +110,7 @@
     font-size: 1.3rem;
     font-weight: bold;
     cursor: pointer;
+    margin-top: 0.2rem;
 }
 
 @media (min-width: 700px) {

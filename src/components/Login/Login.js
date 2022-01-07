@@ -1,8 +1,26 @@
 import {useForm} from "react-hook-form";
 import classes from "./Login.module.css"
 import google from "../../assets/google_sign.png"
+import {useState} from "react";
 
 const Login = () => {
+    const [isSignIn, setIsSignIn] = useState(true);
+
+    const signUpLogInHandler = () => {
+        setIsSignIn(prevState => !prevState)
+        console.log(isSignIn)
+    }
+
+    const signUpLogIn = isSignIn ? <div className={classes.info}>
+        <h3>Not a member yet?</h3>
+        <button type="button" className={classes.border} onClick={signUpLogInHandler}>Sign up</button>
+        <h3>with email and password for free!</h3>
+    </div> : <div className={classes.info}>
+        <h3>Already a member?</h3>
+        <button type="button" className={classes.border} onClick={signUpLogInHandler}>Log in</button>
+        <h3>with email and password</h3>
+    </div>
+
     const {register, handleSubmit, formState: {errors}} = useForm(
         {
             defaultValues: {
@@ -26,13 +44,9 @@ const Login = () => {
                         minLength: {value: 4, message: "Password has to be at least 6 characters long"}
                     })}
                 />
-                <button className={`${classes.login} ${classes.border}`}>Log in</button>
+                <button className={`${classes.login} ${classes.border}`}>{isSignIn ? `Sign in` : `Sign up`}</button>
                 <img className={classes.googleLogin} src={google} alt="sign in with google"/>
-                <div className={classes.info}>
-                    <h3>Not a member yet?</h3>
-                    <button className={classes.border}>Sign up</button>
-                    <h3>with email and password for free!</h3>
-                </div>
+                {signUpLogIn}
                 <div className={classes.passwordRecovery}>
                     <h1>Forgot your password?</h1>
                     <button className={classes.border} type="button">Click here!</button>

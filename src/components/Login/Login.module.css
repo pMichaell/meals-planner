@@ -87,7 +87,7 @@
     background: -webkit-linear-gradient(227deg, #A9C9FF 0%, #FFBBEC 100%);
     -webkit-background-clip: text;
     -webkit-text-fill-color: transparent;
-    margin-bottom: 0.3rem;
+    margin-bottom: 0.5rem;
     margin-top: 0.5rem;
 }
 
@@ -96,7 +96,7 @@
     background: -webkit-linear-gradient(227deg, #A9C9FF 0%, #FFBBEC 100%);
     -webkit-background-clip: text;
     -webkit-text-fill-color: transparent;
-    font-size: 1rem;
+    font-size: 1.3rem;
     font-weight: bold;
     cursor: pointer;
 }

@@ -33,6 +33,10 @@ const Login = () => {
                     <button className={classes.border}>Sign up</button>
                     <h3>with email and password for free!</h3>
                 </div>
+                <div className={classes.passwordRecovery}>
+                    <h1>Forgot your password?</h1>
+                    <button className={classes.border} type="button">Click here!</button>
+                </div>
             </form>
         </div>
     )

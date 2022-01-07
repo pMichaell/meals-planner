@@ -1,10 +1,19 @@
 import classes from "./SideMenu.module.css"
 import {Fragment} from "react";
 import {Link} from "react-router-dom";
+import Backdrop from "../Backdrop/Backdrop";
+import {useDispatch, useSelector} from "react-redux";
+import {changeSideMenuState, selectSideMenu} from "../../store/uiSlice";
 
 const SideMenu = props => {
+    const sideMenuVisible = useSelector(selectSideMenu)
+    const dispatch = useDispatch();
 
     let styles = props.sideMenuVisible ? `${classes.sideMenu} ${classes.open}` : classes.sideMenu;
+
+    const backdropClickHandler = () => {
+        dispatch(changeSideMenuState())
+    }
 
     return <Fragment>
         <div className={styles}>
@@ -14,6 +23,8 @@ const SideMenu = props => {
                 <li className={classes.sideMenuItem}><Link to="/pricing">Pricing</Link></li>
             </ul>
         </div>
+        {sideMenuVisible &&
+        <Backdrop onClick={backdropClickHandler}/>}
     </Fragment>
 }
 

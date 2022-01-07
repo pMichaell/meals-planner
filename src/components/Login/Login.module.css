@@ -79,6 +79,28 @@
     -webkit-text-fill-color: transparent;
 }
 
+.passwordRecovery {
+    text-align: center;
+}
+
+.passwordRecovery h1 {
+    background: -webkit-linear-gradient(227deg, #A9C9FF 0%, #FFBBEC 100%);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    margin-bottom: 0.3rem;
+    margin-top: 0.5rem;
+}
+
+.passwordRecovery button {
+    padding: 0.3rem;
+    background: -webkit-linear-gradient(227deg, #A9C9FF 0%, #FFBBEC 100%);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    font-size: 1rem;
+    font-weight: bold;
+    cursor: pointer;
+}
+
 @media (min-width: 700px) {
     .form {
         width: 50%;

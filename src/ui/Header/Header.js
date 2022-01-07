@@ -3,13 +3,16 @@ import logo from "../../assets/apple_logo.png"
 import {Fragment, useState} from "react";
 import SideMenuButton from "./SideMenuButton";
 import SideMenu from "../SideMenu/SideMenu";
+import {changeSideMenuState, selectSideMenu} from "../../store/uiSlice";
 import {Link} from "react-router-dom";
+import {useDispatch, useSelector} from "react-redux";
 
 const Header = () => {
-    const [sideMenuVisible, setSideMenuVisible] = useState(false);
+    const sideMenuVisible = useSelector(selectSideMenu);
+    const dispatch = useDispatch();
 
     const sideMenuHandler = () => {
-        setSideMenuVisible(!sideMenuVisible)
+        dispatch(changeSideMenuState())
         console.log(sideMenuVisible)
     }
 
@@ -33,6 +36,7 @@ const Header = () => {
                 </nav>
             <SideMenu sideMenuVisible={sideMenuVisible}/>
             </header>
+
         </Fragment>
     )
 }

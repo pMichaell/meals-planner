@@ -1,8 +1,9 @@
-import firebase from "firebase"
+import { initializeApp } from "firebase/app"
+import {getAuth} from "firebase/auth";
 
 
 const firebaseConfig = {
-    apiKey: process.env.PUBLIC_FIREBASE_API_KEY,
+    apiKey: "AIzaSyDnqNZgh-L1sroXegcx3f9F6Vd11Epj1tk",
     authDomain: process.env.PUBLIC_FIREBASE_AUTH_DOMAIN,
     projectId: process.env.PUBLIC_FIREBASE_PROJECT_ID,
     storageBucket: process.env.PUBLIC_FIREBASE_STORAGE_BUCKET,
@@ -10,9 +11,6 @@ const firebaseConfig = {
     appId: process.env.PUBLIC_FIREBASE_APP_ID
 }
 
-firebase.initializeApp(firebaseConfig);
+initializeApp(firebaseConfig);
 
-const auth = firebase.auth();
-const provider = new firebase.auth.GoogleAuthProvider()
-
-export { auth, provider}
+export const auth = getAuth();

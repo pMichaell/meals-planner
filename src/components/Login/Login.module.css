@@ -38,15 +38,19 @@
     border-image-source: linear-gradient(227deg, #A9C9FF 0%, #FFBBEC 100%);
 }
 
-.errorContainer {
+.formErrorContainer {
     margin-top: 0.3rem;
     align-self: flex-start;
     height: 1.5rem;
 }
 
-.errorMessage {
+.formErrorMessage {
     color:white;
     align-self: flex-start;
+}
+
+.authFeedback {
+    color: white;
 }
 
 .signIn {
@@ -94,7 +98,7 @@
     text-align: center;
 }
 
-.passwordRecovery h1 {
+.passwordRecovery h2 {
     background: -webkit-linear-gradient(227deg, #A9C9FF 0%, #FFBBEC 100%);
     -webkit-background-clip: text;
     -webkit-text-fill-color: transparent;

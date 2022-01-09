@@ -11,6 +11,7 @@ import {useDispatch} from "react-redux";
 import MyAccountPage from "./pages/MyAccountPage";
 import RequireAuth from "./router/RequireAuth";
 import PlannerPage from "./pages/PlannerPage";
+import AboutPage from "./pages/AboutPage";
 
 
 function App() {
@@ -34,8 +35,9 @@ function App() {
           <Routes>
             <Route path="/" element={<MainPage/>}/>
             <Route path="/login" element={<LoginPage/>}/>
-              <RequireAuth><Route path="/account" element={<MyAccountPage/>}/></RequireAuth>
-              <RequireAuth><Route path="/planner" element={<PlannerPage/>}/></RequireAuth>
+            <Route path="/account" element={<RequireAuth><MyAccountPage/></RequireAuth>}/>
+            <Route path="/planner" element={<RequireAuth><PlannerPage/></RequireAuth>}/>
+            <Route path="/about" element={<AboutPage/>}/>
           </Routes>
         </Layout>
       </Fragment>

@@ -68,6 +68,7 @@
 .googleLogin {
     width: 12rem;
     margin-top: 1.5rem;
+    cursor: pointer;
 }
 
 .info {

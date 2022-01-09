@@ -20,9 +20,9 @@ const Layout = props => {
         <Fragment>
             <div className={classes.container}>
                 <Header/>
+                <div className={classes.headerBreak}/>
                 <main className={classes.main} onClick={sideMenuHandler}>
-                    <div className={classes.headerBreak}/>
-                    <main>{props.children}</main>
+                    {props.children}
                 </main>
                 <div className={classes.footerBreak}/>
                 <Footer/>

@@ -3,7 +3,7 @@ import classes from "./Login.module.css"
 import google from "../../assets/google_sign.png"
 import {useState} from "react";
 import { ErrorMessage } from '@hookform/error-message';
-import { createUserWithEmailAndPassword, signInWithEmailAndPassword } from "firebase/auth"
+import { createUserWithEmailAndPassword, signInWithEmailAndPassword, signInWithPopup, GoogleAuthProvider } from "firebase/auth"
 import {auth} from "../../firebase/firebase";
 import {useLocation, useNavigate} from "react-router-dom";
 
@@ -40,6 +40,18 @@ const Login = () => {
             })
             .catch(error => {
                 console.log(error);
+                setAuthError(true)
+            })
+    }
+
+    const signInWithGoogle = () => {
+        const provider = new GoogleAuthProvider();
+        signInWithPopup(auth, provider)
+            .then(() => {
+                navigate(from, {replace: true})
+            })
+            .catch((error) => {
+                console.log(error.message)
                 setAuthError(true)
             })
     }
@@ -109,7 +121,7 @@ const Login = () => {
                 </div>
                 {authError && <h2 className={classes.authFeedback}>Invalid credentials</h2>}
                 <button className={`${classes.signIn} ${classes.border}`}>{isSignIn ? `Sign in` : `Sign up`}</button>
-                <img className={classes.googleLogin} src={google} alt="sign in with google"/>
+                <img className={classes.googleLogin} onClick={signInWithGoogle} src={google} alt="sign in with google"/>
                 {signUpLogIn}
                 <div className={classes.passwordRecovery}>
                     <h2>Forgot your password?</h2>

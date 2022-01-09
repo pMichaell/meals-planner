@@ -6,15 +6,28 @@ import SideMenu from "../SideMenu/SideMenu";
 import {changeSideMenuState, selectSideMenu} from "../../store/uiSlice";
 import {Link} from "react-router-dom";
 import {useDispatch, useSelector} from "react-redux";
+import {selectUserLoggedIn} from "../../store/userSlice";
 
 const Header = () => {
     const sideMenuVisible = useSelector(selectSideMenu);
+    const userIsLoggedIn = useSelector(selectUserLoggedIn);
     const dispatch = useDispatch();
 
     const sideMenuHandler = () => {
         dispatch(changeSideMenuState())
         console.log(sideMenuVisible)
     }
+
+    const navigationList = userIsLoggedIn ?
+        <ul className={classes.navigationList}>
+            <li className={classes.navigationListItem}><Link to="/my_account">My Account</Link></li>
+            <li className={classes.navigationListItem}><button>Log Out</button></li>
+        </ul>
+        :
+        <ul className={classes.navigationList}>
+            <li className={classes.navigationListItem}><Link to="/login">Login</Link></li>
+            <li className={classes.navigationListItem}><Link to="/planner">Get Started</Link></li>
+        </ul>
 
     return (
         <Fragment>
@@ -27,11 +40,7 @@ const Header = () => {
                         <p className={classes.plannerParagraph}>Planner</p>
                     </div>
                     <div className={classes.listContainer}>
-                    <ul className={classes.navigationList}>
-                        <li className={classes.navigationListItem}><Link to="/pricing">Pricing</Link></li>
-                        <li className={classes.navigationListItem}><Link to="/login">Login</Link></li>
-                        <li className={classes.navigationListItem}><Link to="/planner">Get Started</Link></li>
-                    </ul>
+                        {navigationList}
                     </div>
                 </nav>
             <SideMenu sideMenuVisible={sideMenuVisible}/>

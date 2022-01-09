@@ -1,0 +1,9 @@
+.container {
+    display: grid;
+    place-items: center;
+}
+
+.email {
+    color: white;
+}
+

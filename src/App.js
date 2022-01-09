@@ -6,27 +6,27 @@ import LoginPage from "./pages/LoginPage";
 import Footer from "./ui/Footer/Footer"
 import {onAuthStateChanged} from "firebase/auth";
 import {setActiveUser, setUserLoggedOut} from "./store/userSlice";
-import { getAuth } from "firebase/auth";
+import {auth} from "./firebase/firebase";
 import {useDispatch} from "react-redux";
+import MyAccountPage from "./pages/MyAccountPage";
+import RequireAuth from "./router/RequireAuth";
+import PlannerPage from "./pages/PlannerPage";
 
 
 function App() {
-    const auth = getAuth();
     const dispatch = useDispatch();
 
- useEffect(() => {
-     onAuthStateChanged(auth, user => {
-         if (user) {
-         alert("onAuthStateChanged login")
-             const userEmail = user.email;
-             dispatch(setActiveUser({userEmail}))
-         }
-         else {
-             alert("onAuthStateChanged not logged in")
-             dispatch(setUserLoggedOut())
-         }
-     })
- }, [auth, dispatch])
+
+    useEffect(() => {
+        onAuthStateChanged(auth, user => {
+            if(user) {
+                dispatch(setActiveUser({userEmail: user.email}))
+            }
+            else {
+                dispatch(setUserLoggedOut())
+            }
+        })
+    }, [dispatch])
 
   return (
       <Fragment>
@@ -34,6 +34,8 @@ function App() {
           <Routes>
             <Route path="/" element={<MainPage/>}/>
             <Route path="/login" element={<LoginPage/>}/>
+              <RequireAuth><Route path="/account" element={<MyAccountPage/>}/></RequireAuth>
+              <RequireAuth><Route path="/planner" element={<PlannerPage/>}/></RequireAuth>
           </Routes>
         </Layout>
       </Fragment>

@@ -3,23 +3,28 @@ import classes from "./Login.module.css"
 import google from "../../assets/google_sign.png"
 import {useState} from "react";
 import { ErrorMessage } from '@hookform/error-message';
-import { createUserWithEmailAndPassword, signInWithEmailAndPassword, getAuth } from "firebase/auth"
-// import {auth} from "../../firebase/firebase";
+import { createUserWithEmailAndPassword, signInWithEmailAndPassword } from "firebase/auth"
+import {auth} from "../../firebase/firebase";
+import {useLocation, useNavigate} from "react-router-dom";
 
 const Login = () => {
     const [isSignIn, setIsSignIn] = useState(true);
     const [authError, setAuthError] = useState(null);
+    const location = useLocation();
+    const navigate = useNavigate();
 
-    const signInChangeHandler = () => {
+
+    const from = location.state?.from?.pathname || "/";
+
+    const authTypeChangeHandler = () => {
         setIsSignIn(prevState => !prevState)
         console.log(isSignIn)
     }
 
     const signInHandler = (email, password) => {
-        const auth = getAuth();
         signInWithEmailAndPassword(auth, email, password)
-            .then(userCredential => {
-                console.log(userCredential.user.email);
+            .then(() => {
+                navigate(from, {replace: true})
             })
             .catch(error => {
                 console.log(error)
@@ -29,11 +34,9 @@ const Login = () => {
     }
 
     const signUpHandler = (email, password) => {
-        const auth = getAuth();
-
         createUserWithEmailAndPassword(auth, email, password)
-            .then( userCredential => {
-                console.log(userCredential.user)
+            .then( () => {
+                navigate(from, {replace: true})
             })
             .catch(error => {
                 console.log(error);
@@ -41,15 +44,19 @@ const Login = () => {
             })
     }
 
+    const clearErrorHandler = () => {
+        setAuthError(false);
+    }
+
     const regex = new RegExp("[a-z0-9!#$%&'*+/=?^_`{|}~-]+(?:\\.[a-z0-9!#$%&'*+/=?^_`{|}~-]+)*@(?:[a-z0-9](?:[a-z0-9-]*[a-z0-9])?\\.)+[a-z0-9](?:[a-z0-9-]*[a-z0-9])?");
 
     const signUpLogIn = isSignIn ? <div className={classes.info}>
         <h3>Not a member yet?</h3>
-        <button type="button" className={classes.border} onClick={signInChangeHandler}>Sign up</button>
+        <button type="button" className={classes.border} onClick={authTypeChangeHandler}>Sign up</button>
         <h3>with email and password for free!</h3>
     </div> : <div className={classes.info}>
         <h3>Already a member?</h3>
-        <button type="button" className={classes.border} onClick={signInChangeHandler}>Sign in</button>
+        <button type="button" className={classes.border} onClick={authTypeChangeHandler}>Sign in</button>
         <h3>with email and password</h3>
     </div>
 
@@ -78,6 +85,7 @@ const Login = () => {
                 <h2 className={classes.inputTag}>E-mail</h2>
                 <input
                     type="email"
+                    onFocus={clearErrorHandler}
                     className={`${classes.input} ${classes.border}`} {...register("email", {
                     required: "Email is required",
                     validate: value => regex.test(value) || 'Entered email is incorrect'
@@ -85,7 +93,10 @@ const Login = () => {
                 <div className={classes.formErrorContainer}><ErrorMessage errors={errors} name="email"
                                                                           render={({message}) => <span className={classes.formErrorMessage}>{message}</span>}/></div>
                 <h2 className={classes.inputTag}>Password</h2>
-                <input type="password" className={`${classes.input} ${classes.border}`} {...register("password",
+                <input
+                    type="password"
+                    onFocus={clearErrorHandler}
+                    className={`${classes.input} ${classes.border}`} {...register("password",
                     {
                         required: "Password is required",
                         minLength: {value: 6, message: "Password has to be at least 6 characters long"}

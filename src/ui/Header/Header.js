@@ -4,7 +4,7 @@ import {Fragment} from "react";
 import SideMenuButton from "./SideMenuButton";
 import SideMenu from "../SideMenu/SideMenu";
 import {changeSideMenuState, selectSideMenu} from "../../store/uiSlice";
-import {Link, useNavigate} from "react-router-dom";
+import {Link, NavLink, useNavigate} from "react-router-dom";
 import {useDispatch, useSelector} from "react-redux";
 import {selectUserLoggedIn} from "../../store/userSlice";
 import {auth} from "../../firebase/firebase";
@@ -37,8 +37,18 @@ const Header = () => {
         </ul>
         :
         <ul className={classes.navigationList}>
-            <li className={classes.navigationListItem}><Link to="/planner">Get Started</Link></li>
-            <li className={classes.navigationListItem}><Link to="/login">Login</Link></li>
+            <li className={classes.navigationListItem}><NavLink
+                style={({ isActive }) => {
+                    return {
+                        color: isActive ? `#d3d3d3` : ""
+                    };
+                }}
+                to="/planner">Get Started</NavLink></li>
+            <li className={classes.navigationListItem}><NavLink  style={({ isActive }) => {
+                return {
+                    color: isActive ? `#d3d3d3` : ""
+                };
+            }} to="/login">Sign in</NavLink></li>
         </ul>
 
     return (

@@ -1,8 +1,9 @@
 import classes from "./Planer.module.css"
+import {Outlet} from "react-router-dom";
 
 const Planner = () => {
     return <div className={classes.container}>
-        <h1>Planner</h1>
+        <Outlet/>
     </div>
 }
 

@@ -12,6 +12,10 @@ import MyAccountPage from "./pages/MyAccountPage";
 import RequireAuth from "./router/RequireAuth";
 import PlannerPage from "./pages/PlannerPage";
 import AboutPage from "./pages/AboutPage";
+import DayPlanner from "./components/Planner/DayPlanner";
+import MealPlanner from "./components/Planner/MealPlanner";
+import Planner from "./components/Planner/Planner";
+import PlannerIntroduction from "./components/Planner/PlannerIntroduction";
 
 
 function App() {
@@ -36,7 +40,12 @@ function App() {
             <Route path="/" element={<MainPage/>}/>
             <Route path="/login" element={<LoginPage/>}/>
             <Route path="/account" element={<RequireAuth><MyAccountPage/></RequireAuth>}/>
-            <Route path="/planner" element={<RequireAuth><PlannerPage/></RequireAuth>}/>
+            <Route path="/planner">
+            <Route index element={<RequireAuth><PlannerIntroduction/></RequireAuth>}/>
+            <Route path=":day" element={<DayPlanner/>}>
+            <Route path=":meal" element={<MealPlanner/>}/>
+            </Route>
+            </Route>
             <Route path="/about" element={<AboutPage/>}/>
           </Routes>
         </Layout>

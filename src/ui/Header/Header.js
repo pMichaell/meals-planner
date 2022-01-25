@@ -33,7 +33,7 @@ const Header = () => {
     const navigationList = userIsLoggedIn ?
         <ul className={classes.navigationList}>
             <li className={classes.navigationListItem}><Link to="/account">My Account</Link></li>
-            <li className={classes.navigationListItem}><button onClick={signOutHandler}>Log Out</button></li>
+            <li className={classes.navigationListItem}><button onClick={signOutHandler}>Sign Out</button></li>
         </ul>
         :
         <ul className={classes.navigationList}>

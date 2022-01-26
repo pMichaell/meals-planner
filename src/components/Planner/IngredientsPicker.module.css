@@ -1,0 +1,23 @@
+.div {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+}
+
+.headerContainer {
+    display: flex;
+    place-items: center;
+    text-align: center;
+}
+
+.headerContainer h2{
+    color: white;
+}
+
+.ingredientsContainer {
+    display:flex;
+    flex-wrap: wrap;
+    flex-direction: row;
+    align-items: center;
+    justify-content: center;
+}

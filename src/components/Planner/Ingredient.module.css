@@ -1,0 +1,32 @@
+.div {
+    width: 8rem;
+    height: 2.5rem;
+    background-color: white;
+    margin: 4px 10px 4px 10px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    text-align: center;
+    border-radius: 8px;
+}
+
+.divChecked {
+    background-color: #50C878;
+}
+
+
+.ingredientsContainer h4  {
+    margin: 0;
+    padding: 0;
+}
+
+@media (min-width: 700px) {
+    .div {
+        cursor: pointer;
+        animation: transform 250ms ease-in-out;
+    }
+
+    .div:hover{
+        transform: scale(1.1);
+    }
+}

@@ -4,7 +4,7 @@ import Day from "./Day";
 const PlannerIntroduction = () => {
     return <div className={classes.container}>
         <div className={classes.headerContainer}>
-            <h2>Choose a day to start with!</h2>
+            <h2>Pick a day!</h2>
         </div>
         <div className={classes.daysContainer}>
             <Day day="Monday"/>

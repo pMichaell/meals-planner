@@ -1,5 +1,5 @@
 import classes from "./DayPlanner.module.css";
-import {useParams} from "react-router-dom";
+import {Outlet, useParams} from "react-router-dom";
 import NavigationBar from "./NavigationBar";
 
 const DayPlanner = () => {

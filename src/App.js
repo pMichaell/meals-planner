@@ -43,10 +43,10 @@ function App() {
             <Route path="/account" element={<RequireAuth><MyAccountPage/></RequireAuth>}/>
             <Route path="/planner">
             <Route index element={<PlannerIntroduction/>}/>
-            <Route path=":day" element={<DayPlanner/>}>
-            <Route path=":meal" element={<MealPlanner/>}>
+            <Route path=":day" element={<DayPlanner/>}/>
+            <Route path=":day/:meal">
+                <Route index element={<MealPlanner/>}/>
                 <Route path="ingredients" element={<IngredientsPicker/>}/>
-            </Route>
             </Route>
             </Route>
             <Route path="/about" element={<AboutPage/>}/>

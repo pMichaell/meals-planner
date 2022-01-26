@@ -16,6 +16,7 @@ import DayPlanner from "./components/Planner/DayPlanner";
 import MealPlanner from "./components/Planner/MealPlanner";
 import Planner from "./components/Planner/Planner";
 import PlannerIntroduction from "./components/Planner/PlannerIntroduction";
+import IngredientsPicker from "./components/Planner/IngredientsPicker";
 
 
 function App() {
@@ -41,9 +42,11 @@ function App() {
             <Route path="/login" element={<LoginPage/>}/>
             <Route path="/account" element={<RequireAuth><MyAccountPage/></RequireAuth>}/>
             <Route path="/planner">
-            <Route index element={<RequireAuth><PlannerIntroduction/></RequireAuth>}/>
+            <Route index element={<PlannerIntroduction/>}/>
             <Route path=":day" element={<DayPlanner/>}>
-            <Route path=":meal" element={<MealPlanner/>}/>
+            <Route path=":meal" element={<MealPlanner/>}>
+                <Route path="ingredients" element={<IngredientsPicker/>}/>
+            </Route>
             </Route>
             </Route>
             <Route path="/about" element={<AboutPage/>}/>

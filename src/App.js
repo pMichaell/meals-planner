@@ -16,7 +16,7 @@ import DayPlanner from "./components/Planner/DayPlanner";
 import MealPlanner from "./components/Planner/MealPlanner";
 import Planner from "./components/Planner/Planner";
 import PlannerIntroduction from "./components/Planner/PlannerIntroduction";
-import IngredientsPicker from "./components/Planner/IngredientsPicker";
+import IngredientsPicker from "./components/Planner/IngredientsPicker/IngredientsPicker";
 
 
 function App() {

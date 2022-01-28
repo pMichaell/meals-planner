@@ -36,7 +36,7 @@ const IngredientsPicker = () => {
     }
 
     const headerContents = pickedIngredients.length > 0 ?
-        <PickedIngredients ingredients={getIngredients(pickedIngredients)}/> :
+        <PickedIngredients ingredients={pickedIngredients} getIngredients={getIngredients}/> :
         <div className={classes.headerContainer}>
             <h2>Pick up to 3 ingredients and see great {params.meal} proposals!</h2>
         </div>

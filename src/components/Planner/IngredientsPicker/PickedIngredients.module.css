@@ -3,6 +3,7 @@
     flex-direction: column;
     justify-content: space-between;
     align-items: center;
+    margin-bottom: 0.5rem;
 }
 
 .headerContainer {
@@ -11,6 +12,7 @@
 }
 
 .headerContainer h2 {
+    margin: 1rem 0 1rem 0;
     color: white;
 }
 

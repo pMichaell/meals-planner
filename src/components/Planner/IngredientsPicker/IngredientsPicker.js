@@ -4,6 +4,8 @@ import Ingredient from "./Ingredient";
 import {useState} from "react";
 import {useParams} from "react-router-dom";
 import PickedIngredients from "./PickedIngredients";
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
+import { solid, regular } from '@fortawesome/fontawesome-svg-core/import.macro'
 
 
 const IngredientsPicker = () => {
@@ -46,6 +48,10 @@ const IngredientsPicker = () => {
 
     return <div className={classes.div}>
         {headerContents}
+        <div className={classes.searchBar}>
+            <FontAwesomeIcon icon={solid('search')} className={classes.searchIcon}/>
+            <input type="text"/>
+        </div>
         <div className={classes.ingredientsContainer}>
             {getIngredients(ingredients)}
         </div>

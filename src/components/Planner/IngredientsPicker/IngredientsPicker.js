@@ -2,15 +2,15 @@ import classes from "./IngredientsPicker.module.css"
 import data from "../../../assets/ingredients"
 import Ingredient from "./Ingredient";
 import {useState} from "react";
-import {useParams} from "react-router-dom";
+import {useParams, useSearchParams} from "react-router-dom";
 import PickedIngredients from "./PickedIngredients";
-import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
-import { solid, regular } from '@fortawesome/fontawesome-svg-core/import.macro'
+import SearchBar from "../../SearchBar/SearchBar";
 
 
 const IngredientsPicker = () => {
     const [pickedIngredients, setPickedIngredients] = useState([]);
     const params = useParams();
+    const [searchParams] = useSearchParams();
     let ingredients = data;
 
     const addIngredient = ingredient => {
@@ -28,8 +28,18 @@ const IngredientsPicker = () => {
         setPickedIngredients(updatedPickedIngredients);
     }
 
-    const getIngredients = input => {
-        return input.map(ingredient => {
+    const getIngredients = (input, isFiltered) => {
+        let filtered = [...input];
+        if (isFiltered) {
+            filtered = input.filter(ingredient => {
+                    let filter = searchParams.get("filter");
+                    if (!filter) return true;
+                    let name = ingredient.strIngredient.toLowerCase().replace(/\s/g, "");
+                    return name.includes(filter.toLowerCase());
+        })
+        }
+
+        return filtered.map(ingredient => {
             return <Ingredient key={ingredient.idIngredient} ingredient={ingredient}
                                func={{addIngredient, deleteIngredient}}
                                 pickedIngredients={pickedIngredients}
@@ -45,15 +55,11 @@ const IngredientsPicker = () => {
 
 
 
-
     return <div className={classes.div}>
         {headerContents}
-        <div className={classes.searchBar}>
-            <FontAwesomeIcon icon={solid('search')} className={classes.searchIcon}/>
-            <input type="text"/>
-        </div>
+        <SearchBar searchParamName="filter"/>
         <div className={classes.ingredientsContainer}>
-            {getIngredients(ingredients)}
+            {getIngredients(ingredients, true)}
         </div>
     </div>
 }

@@ -4,6 +4,7 @@
     justify-content: space-between;
     align-items: center;
     margin-bottom: 0.5rem;
+    width: 60%;
 }
 
 .headerContainer {
@@ -16,7 +17,58 @@
     color: white;
 }
 
-.pickedIngredientsContainer {
+.contentContainer {
     display: flex;
-    flex-direction: column;
+    width: 100%;
+    justify-content: space-between;
 }
+
+.ingredientsContainer {
+    display:flex;
+    flex-direction: column;
+    justify-self: flex-start;
+}
+
+.arrowContainer {
+    display: flex;
+    place-items: center;
+    margin-right: 13px;
+}
+
+.arrowDiv {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    height: 50px;
+    width: 50px;
+    border: 2px solid white;
+    background: black;
+}
+
+.arrowDiv:hover {
+    background: white;
+    border: 2px solid black
+}
+
+.arrowDiv:hover .arrow {
+    color: black;
+}
+
+@media (min-width: 700px) {
+    .contentContainer {
+        width: 80%;
+        flex-direction: column;
+        align-items: center;
+    }
+
+    .ingredientsContainer {
+        width: 90%;
+        align-items: center;
+        justify-content: center;
+    }
+
+    .arrowContainer {
+        margin: 1rem 0 0 0;
+    }
+}
+

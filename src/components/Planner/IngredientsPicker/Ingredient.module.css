@@ -1,6 +1,6 @@
 .div {
     width: 8rem;
-    height: 2.5rem;
+    height: 3.5rem;
     background-color: black;
     color: white;
     margin: 4px 10px 4px 10px;
@@ -16,20 +16,22 @@
     background-color: #50C878;
 }
 
-
-.ingredientsContainer h4  {
-    margin: 0;
-    padding: 0;
-    cursor: pointer;
-}
-
 @media (min-width: 700px) {
     .div {
         cursor: pointer;
         animation: transform 250ms ease-in-out;
+        width: 13rem;
+        height: 8rem;
+        border: 3px solid white;
+    }
+
+    .div h4 {
+        font-size: 28px;
     }
 
     .div:hover{
         transform: scale(1.1);
     }
+
+
 }

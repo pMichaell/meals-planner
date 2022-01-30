@@ -9,7 +9,7 @@ const SearchBar = props => {
     const searchParam = props.searchParamName;
     const {width} = useWindowDimensions();
 
-    const iconSize = width > 700 ? "3x" : "2x";
+    const iconSize = width > 700 ? "3x" : "1x";
 
     return <div className={classes.searchBar}>
         <FontAwesomeIcon icon={solid('search')} size={iconSize} inverse className={classes.searchIcon}/>

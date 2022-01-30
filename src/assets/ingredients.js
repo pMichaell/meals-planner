@@ -1,3 +1,6 @@
+import {doc, setDoc} from "firebase/firestore";
+import {database} from "../firebase/firebase";
+
 const ingredients = [
     {
         idIngredient: 1,
@@ -3446,3 +3449,20 @@ const ingredients = [
 ]
 
 export default ingredients;
+
+
+const seedData = async () => {
+    for (const ingredient of ingredients) {
+        console.log(ingredient)
+        let tmpStringredient = ingredient.strIngredient;
+        let tmpStringDesc = ingredient.strDescription
+        let tmpStringId = ingredient.idIngredient;
+        let tmpStrType = ingredient.strType;
+        await setDoc(doc(database, "ingredients", `${tmpStringId}`), {
+            strIngredient: tmpStringredient,
+            strDescription: tmpStringDesc,
+            strType: tmpStrType
+        });
+    }
+
+}

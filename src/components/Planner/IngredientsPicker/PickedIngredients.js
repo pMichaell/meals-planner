@@ -5,13 +5,7 @@ import {useNavigate, useParams} from "react-router-dom";
 import useWindowDimensions from "../../../hooks/useWindowDimensions";
 
 const PickedIngredients = props => {
-    const navigate = useNavigate();
     const {width} = useWindowDimensions();
-    const params = useParams();
-
-    const goToMeal = () => {
-        navigate('..');
-    }
 
     const iconSize = width > 700 ? "4x" : "2x";
 
@@ -22,7 +16,7 @@ const PickedIngredients = props => {
                 {props.getIngredients(props.ingredients)}
             </div>
             <div className={classes.arrowContainer}>
-                <div className={classes.arrowDiv} onClick={goToMeal}>
+                <div className={classes.arrowDiv} onClick={props.navigateToMeal}>
                     <FontAwesomeIcon icon={solid('arrow-right')} size={iconSize} inverse className={classes.arrow}/>
                 </div>
             </div>

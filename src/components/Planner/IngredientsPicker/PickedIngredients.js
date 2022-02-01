@@ -1,7 +1,6 @@
 import classes from "./PickedIngredients.module.css"
 import {FontAwesomeIcon} from "@fortawesome/react-fontawesome";
-import { solid } from '@fortawesome/fontawesome-svg-core/import.macro'
-import {useNavigate, useParams} from "react-router-dom";
+import {solid} from '@fortawesome/fontawesome-svg-core/import.macro'
 import useWindowDimensions from "../../../hooks/useWindowDimensions";
 
 const PickedIngredients = props => {

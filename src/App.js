@@ -11,7 +11,7 @@ import MyAccountPage from "./pages/MyAccountPage";
 import RequireAuth from "./router/RequireAuth";
 import AboutPage from "./pages/AboutPage";
 import DayPlanner from "./components/Planner/DayPlanner";
-import MealPlanner from "./components/Planner/MealPlanner";
+import MealPlanner from "./components/Planner/MealPicker/MealPlanner";
 import PlannerIntroduction from "./components/Planner/PlannerIntroduction";
 import IngredientsPicker from "./components/Planner/IngredientsPicker/IngredientsPicker";
 import IngredientsContextProvider from "./contexts/IngredientsContextProvider";

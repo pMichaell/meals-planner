@@ -52,6 +52,10 @@
     display: none;
 }
 
+.headerBreak {
+    background-color: white;
+    height: 0.2rem;
+}
 
 
 @media (min-width: 700px) {

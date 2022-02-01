@@ -67,7 +67,6 @@ const Header = () => {
                 </nav>
             <SideMenu sideMenuVisible={sideMenuVisible}/>
             </header>
-
         </Fragment>
     )
 }

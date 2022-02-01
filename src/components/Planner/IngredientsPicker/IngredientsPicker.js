@@ -34,7 +34,6 @@ const IngredientsPicker = () => {
 
     const submitIngredients = () => {
         ingredientsContext.setIngredients(pickedIngredients);
-        console.log(ingredientsContext.ingredients);
         navigate('..');
     }
 

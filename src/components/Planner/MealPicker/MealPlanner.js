@@ -1,24 +1,31 @@
 import classes from "./MealPlanner.module.css"
-import {useContext, useEffect, useState} from "react";
-import IngredientsContext from "../../../contexts/ingredients-context";
+import {useEffect, useState} from "react";
 import axios from "axios";
 import CardArticle from "../../../ui/CardArticle/CardArticle";
+import {getPickedIngredients} from "../../../firebase/firestore-functions";
+import Spinner from "../../../ui/Spinner/Spinner";
+
 
 const MealPlanner = () => {
-    const context = useContext(IngredientsContext);
     const [retrievedMeals, setRetrievedMeals] = useState([]);
+    const [isLoading, setIsLoading] = useState(false);
 
     useEffect(() => {
-        let ingredientsString = "";
-        console.log(context.ingredients);
-        const collectIngredients = () => {
-            context.ingredients.forEach(ingredient => {
-                ingredientsString = ingredientsString.concat(ingredient.strIngredient.replaceAll(" ", "_").toLowerCase());
-                ingredientsString = ingredientsString.concat(" ");
-            })
-            ingredientsString = ingredientsString.trim().replaceAll(" ", ",");
-        }
-        collectIngredients();
+        const getData = async () => {
+            setIsLoading(true);
+            const collectIngredients = async () => {
+                const fetchedIngredients = await getPickedIngredients();
+                return createIngrString(fetchedIngredients);
+            }
+            let ingredientsString = await collectIngredients();
+            fetchMeals(ingredientsString);
+            setIsLoading(false);
+        };
+
+        getData();
+    }, [])
+
+    const fetchMeals = ingredientsString => {
         axios.request({
             method: 'GET',
             url: 'https://themealdb.p.rapidapi.com/filter.php',
@@ -28,37 +35,50 @@ const MealPlanner = () => {
                 'x-rapidapi-key': '2b78b914femshec0f550e8473fcbp16e5e3jsncbe85eca22c6'
             }
         }).then(response => {
-            setRetrievedMeals(response.data.meals);
-            console.log(response.data.meals)
+            if (response.data.meals) {
+                setRetrievedMeals(response.data.meals);
+                return;
+            }
+            setRetrievedMeals([]);
         }).catch(error => {
             console.error(error);
         });
-
-    }, [context.ingredients])
-
-
-    const mapMeals = () => {
-        return retrievedMeals.map(meal => {
-            return <li key={meal.idMeal}><CardArticle articleText={meal.strMeal} articleImage={meal.strMealThumb}/></li>
-        })
     }
 
-    return <div>
-        <ul className={classes.mealsList}>{mapMeals()}</ul>
+    const mapMeals = () => {
+        if(retrievedMeals.length > 0) {
+            return retrievedMeals.map(meal => {
+                return <ul className={classes.mealsList} key={meal.idMeal}>
+                    <li>
+                        <CardArticle articleText={meal.strMeal} articleImage={meal.strMealThumb}/>
+                    </li>
+                </ul>
+            })
+        }
+        return <h1>We did not find meals matching ingredients you have picked</h1>
+    }
+
+    const contents = isLoading ?
+        <Spinner/> : mapMeals();
+
+
+    return <div className={classes.div}>
+        {contents}
     </div>
 }
 
 export default MealPlanner;
 
+const createIngrString = fetchedIngredients => {
+    let ingredientsString = ""
+    fetchedIngredients.forEach(ingredient => {
+        ingredientsString = ingredientsString.concat(ingredient.strIngredient.replaceAll(" ", "_").toLowerCase());
+        ingredientsString = ingredientsString.concat(" ");
+    })
+    ingredientsString = ingredientsString.trim().replaceAll(" ", ",");
+    return ingredientsString;
+}
 
-let options = {
-    method: 'GET',
-    url: 'https://themealdb.p.rapidapi.com/filter.php',
-    params: {i: 'chicken_breast,garlic,salt'},
-    headers: {
-        'x-rapidapi-host': 'themealdb.p.rapidapi.com',
-        'x-rapidapi-key': '2b78b914femshec0f550e8473fcbp16e5e3jsncbe85eca22c6'
-    }
-};
+
 
 

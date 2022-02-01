@@ -2,13 +2,12 @@ import classes from "./IngredientsPicker.module.css"
 import {FontAwesomeIcon} from "@fortawesome/react-fontawesome";
 import {solid} from '@fortawesome/fontawesome-svg-core/import.macro'
 import Ingredient from "./Ingredient";
-import {useContext, useEffect, useState} from "react";
+import {useEffect, useState} from "react";
 import {useNavigate, useParams, useSearchParams} from "react-router-dom";
 import PickedIngredients from "./PickedIngredients";
 import SearchBar from "../../SearchBar/SearchBar";
-import {getAllIngredients} from "../../../firebase/firestore-functions";
-import {database} from "../../../firebase/firebase";
-import IngredientsContext from "../../../contexts/ingredients-context";
+import {getAllIngredients, submitPickedIngredients} from "../../../firebase/firestore-functions";
+import Spinner from "../../../ui/Spinner/Spinner";
 
 
 const IngredientsPicker = () => {
@@ -16,7 +15,6 @@ const IngredientsPicker = () => {
     const [ingredients, setIngredients] = useState([]);
     const [isLoading, setIsLoading] = useState(false);
     const [searchParams] = useSearchParams();
-    const ingredientsContext = useContext(IngredientsContext);
     const navigate = useNavigate();
     const params = useParams();
 
@@ -24,7 +22,7 @@ const IngredientsPicker = () => {
     useEffect(() => {
         const fetchData = async () => {
             setIsLoading(true);
-            const fetchedIngredients = await getAllIngredients(database, "ingredients")
+            const fetchedIngredients = await getAllIngredients();
             setIngredients(fetchedIngredients);
             setIsLoading(false);
         }
@@ -32,8 +30,8 @@ const IngredientsPicker = () => {
          fetchData();
     }, [])
 
-    const submitIngredients = () => {
-        ingredientsContext.setIngredients(pickedIngredients);
+    const submitIngredients = async() => {
+        await submitPickedIngredients(pickedIngredients);
         navigate('..');
     }
 
@@ -78,7 +76,7 @@ const IngredientsPicker = () => {
         </div>
 
     const bodyContents = isLoading ?
-        <FontAwesomeIcon icon={solid('circle-notch')} size="5x" spin inverse className={classes.spinner}/> :
+        <Spinner/> :
         getIngredients(ingredients, true);
 
 

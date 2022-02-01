@@ -14,7 +14,6 @@ import DayPlanner from "./components/Planner/DayPlanner";
 import MealPlanner from "./components/Planner/MealPicker/MealPlanner";
 import PlannerIntroduction from "./components/Planner/PlannerIntroduction";
 import IngredientsPicker from "./components/Planner/IngredientsPicker/IngredientsPicker";
-import IngredientsContextProvider from "./contexts/IngredientsContextProvider";
 
 
 function App() {
@@ -35,7 +34,6 @@ function App() {
   return (
       <Fragment>
         <Layout>
-            <IngredientsContextProvider>
                 <Routes>
                 <Route path="/" element={<MainPage/>}/>
                 <Route path="/login" element={<LoginPage/>}/>
@@ -50,7 +48,6 @@ function App() {
                 </Route>
                 <Route path="/about" element={<AboutPage/>}/>
             </Routes>
-            </IngredientsContextProvider>
         </Layout>
       </Fragment>
   );

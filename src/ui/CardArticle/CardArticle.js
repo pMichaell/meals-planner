@@ -2,7 +2,7 @@ import classes from "./CardArticle.module.css"
 
 const CardArticle = props => {
     return <article className={classes.article}>
-        <img src={props.articleImage} alt={`${props.articleText} image`} className={classes.image}/>
+        <img src={props.articleImage} alt={`${props.articleText}`} className={classes.image}/>
         <div className={classes.layout}><h2 className={classes.mealName}>{props.articleText}</h2></div>
     </article>
 }

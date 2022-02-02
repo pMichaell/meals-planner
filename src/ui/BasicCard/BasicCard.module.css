@@ -1,10 +1,14 @@
-.divShadow {
+.basicCard {
+    background: black;
+    border: 2px solid white;
+    border-radius: 8px;
+    animation: transform 250ms ease-in-out;
     -webkit-box-shadow: 0px 0px 32px 9px rgba(220, 224, 224, 0.39);
     -moz-box-shadow: 0px 0px 32px 9px rgba(220, 224, 224, 0.39);
     box-shadow: 0px 0px 32px 9px rgba(220, 224, 224, 0.39);
 }
 
-.h2 {
-    color: white;
-    text-align: center;
+.card:hover {
+    transform: scale(1.1);
 }
+

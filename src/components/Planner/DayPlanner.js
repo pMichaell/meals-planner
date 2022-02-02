@@ -8,9 +8,9 @@ const DayPlanner = () => {
     return <div className={classes.div}>
         <div className={classes.headerContainer}><h1>Pick meal for each part of {params.day}</h1></div>
         <div className={classes.mealPickContainer}>
-            <NavigationBar name="breakfast" path="./breakfast/ingredients" style={{cardStyling: classes.card}}/>
-            <NavigationBar name="dinner" path="./dinner/ingredients" style={{cardStyling: classes.card}}/>
-            <NavigationBar name="supper" path="./supper/ingredients" style={{cardStyling: classes.card}}/>
+            <NavigationBar name="breakfast" path="./breakfast/ingredients" className={{cardStyling: classes.card}}/>
+            <NavigationBar name="dinner" path="./dinner/ingredients" className={{cardStyling: classes.card}}/>
+            <NavigationBar name="supper" path="./supper/ingredients" className={{cardStyling: classes.card}}/>
         </div>
     </div>
 }

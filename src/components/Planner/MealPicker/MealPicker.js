@@ -1,12 +1,14 @@
-import classes from "./MealPlanner.module.css"
+import classes from "./MealPicker.module.css"
 import {useEffect, useState} from "react";
 import axios from "axios";
 import CardArticle from "../../../ui/CardArticle/CardArticle";
 import {getPickedIngredients} from "../../../firebase/firestore-functions";
 import Spinner from "../../../ui/Spinner/Spinner";
+import Header from "../../../ui/Header/Header";
+import PageHeader from "../../../ui/PageHeader/PageHeader";
 
 
-const MealPlanner = () => {
+const MealPicker = () => {
     const [retrievedMeals, setRetrievedMeals] = useState([]);
     const [isLoading, setIsLoading] = useState(false);
 
@@ -46,17 +48,17 @@ const MealPlanner = () => {
     }
 
     const mapMeals = () => {
-        if(retrievedMeals.length > 0) {
-            return retrievedMeals.map(meal => {
-                return <ul className={classes.mealsList} key={meal.idMeal}>
-                    <li>
-                        <CardArticle articleText={meal.strMeal} articleImage={meal.strMealThumb}/>
-                    </li>
-                </ul>
-            })
-        }
-        return <h1>We did not find meals matching ingredients you have picked</h1>
+        return retrievedMeals.map(meal => {
+            return <ul className={classes.mealsList} key={meal.idMeal}>
+                <li>
+                    <CardArticle articleText={meal.strMeal} articleImage={meal.strMealThumb}/>
+                </li>
+            </ul>
+        })
     }
+
+
+
 
     const contents = isLoading ?
         <Spinner/> : mapMeals();
@@ -67,7 +69,7 @@ const MealPlanner = () => {
     </div>
 }
 
-export default MealPlanner;
+export default MealPicker;
 
 const createIngrString = fetchedIngredients => {
     let ingredientsString = ""

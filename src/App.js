@@ -11,7 +11,7 @@ import MyAccountPage from "./pages/MyAccountPage";
 import RequireAuth from "./router/RequireAuth";
 import AboutPage from "./pages/AboutPage";
 import DayPlanner from "./components/Planner/DayPlanner";
-import MealPlanner from "./components/Planner/MealPicker/MealPlanner";
+import MealPicker from "./components/Planner/MealPicker/MealPicker";
 import PlannerIntroduction from "./components/Planner/PlannerIntroduction";
 import IngredientsPicker from "./components/Planner/IngredientsPicker/IngredientsPicker";
 
@@ -42,7 +42,7 @@ function App() {
                     <Route index element={<PlannerIntroduction/>}/>
                     <Route path=":day" element={<DayPlanner/>}/>
                     <Route path=":day/:meal">
-                        <Route index element={<MealPlanner/>}/>
+                        <Route index element={<MealPicker/>}/>
                         <Route path="ingredients" element={<IngredientsPicker/>}/>
                     </Route>
                 </Route>

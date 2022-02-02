@@ -1,54 +1,17 @@
 import classes from "./MealPicker.module.css"
-import {useEffect, useState} from "react";
-import axios from "axios";
+import {Fragment} from "react";
 import CardArticle from "../../../ui/CardArticle/CardArticle";
-import {getPickedIngredients} from "../../../firebase/firestore-functions";
 import Spinner from "../../../ui/Spinner/Spinner";
-import Header from "../../../ui/Header/Header";
-import PageHeader from "../../../ui/PageHeader/PageHeader";
+import Icon from "../../../ui/IconPicker/Icon";
+import useFetchMeals from "../../../hooks/use-fetch-meals";
+import FallBackContent from "./FallBackContent";
 
 
 const MealPicker = () => {
-    const [retrievedMeals, setRetrievedMeals] = useState([]);
-    const [isLoading, setIsLoading] = useState(false);
-
-    useEffect(() => {
-        const getData = async () => {
-            setIsLoading(true);
-            const collectIngredients = async () => {
-                const fetchedIngredients = await getPickedIngredients();
-                return createIngrString(fetchedIngredients);
-            }
-            let ingredientsString = await collectIngredients();
-            fetchMeals(ingredientsString);
-            setIsLoading(false);
-        };
-
-        getData();
-    }, [])
-
-    const fetchMeals = ingredientsString => {
-        axios.request({
-            method: 'GET',
-            url: 'https://themealdb.p.rapidapi.com/filter.php',
-            params: {i: ingredientsString},
-            headers: {
-                'x-rapidapi-host': 'themealdb.p.rapidapi.com',
-                'x-rapidapi-key': '2b78b914femshec0f550e8473fcbp16e5e3jsncbe85eca22c6'
-            }
-        }).then(response => {
-            if (response.data.meals) {
-                setRetrievedMeals(response.data.meals);
-                return;
-            }
-            setRetrievedMeals([]);
-        }).catch(error => {
-            console.error(error);
-        });
-    }
+    const {isLoading, fetchedMeals} = useFetchMeals();
 
     const mapMeals = () => {
-        return retrievedMeals.map(meal => {
+        return fetchedMeals.map(meal => {
             return <ul className={classes.mealsList} key={meal.idMeal}>
                 <li>
                     <CardArticle articleText={meal.strMeal} articleImage={meal.strMealThumb}/>
@@ -57,29 +20,47 @@ const MealPicker = () => {
         })
     }
 
+    const getHeader = () => {
+        setTimeout(() => {
+            return <Fragment>
+                <h1 className={classes.header}>Sorry we haven't found matching meals</h1>
+                <Icon iconData={{
+                    iconName: 'frown-open',
+                    iconSize: "5x",
+                    isInverse: true,
+                    className: classes.icon,
+                    isSpin: true
+                }}/>
+            </Fragment>
+        }, 500);
+    }
+
+    const headerContents = fetchedMeals.length > 0 ?
+        <h2 className={classes.header}>We found {fetchedMeals.length} meals matching picked ingredients</h2>
+        :
+        getHeader();
 
 
-
-    const contents = isLoading ?
-        <Spinner/> : mapMeals();
+    const bodyContents = isLoading ?
+        <Spinner/> :
+        fetchedMeals.length > 0 ?
+            mapMeals() :
+            <FallBackContent/>;
 
 
     return <div className={classes.div}>
-        {contents}
+        <div className={classes.headerDiv}>
+            {headerContents}
+        </div>
+        <div className={classes.bodyDiv}>
+            {bodyContents}
+        </div>
     </div>
 }
 
 export default MealPicker;
 
-const createIngrString = fetchedIngredients => {
-    let ingredientsString = ""
-    fetchedIngredients.forEach(ingredient => {
-        ingredientsString = ingredientsString.concat(ingredient.strIngredient.replaceAll(" ", "_").toLowerCase());
-        ingredientsString = ingredientsString.concat(" ");
-    })
-    ingredientsString = ingredientsString.trim().replaceAll(" ", ",");
-    return ingredientsString;
-}
+
 
 
 

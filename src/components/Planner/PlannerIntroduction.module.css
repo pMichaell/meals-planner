@@ -32,7 +32,6 @@
 
 .card {
     border-radius: 8px;
-    background-color: white;
     overflow: hidden;
     height: 4rem;
     width: 60%;
@@ -41,12 +40,11 @@
     justify-content: center;
     outline: none;
     cursor: pointer;
-    color: black;
+    background: black;
+    border: 2px solid white;
 }
 
-.card h2 {
-    color: black
-}
+
 
 @media (min-width: 700px) {
 

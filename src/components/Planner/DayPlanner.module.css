@@ -32,9 +32,12 @@
     border-radius: 8px;
     width: 60%;
     height: 4rem;
-    background-color: white;
+    background-color: black;
+    border: solid 2px white;
     display: flex;
     align-items: center;
     justify-content: center;
     cursor: pointer;
 }
+
+

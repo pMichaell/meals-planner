@@ -4,10 +4,9 @@ import {Fragment} from "react";
 import Backdrop from "../Backdrop/Backdrop";
 
 
-
 const ModalOverlay = props => {
     return <div className={classes.modal}>
-        <div className={classes.content}>{props.children}</div>
+        {props.children}
     </div>
 }
 
@@ -16,8 +15,9 @@ const Modal = props => {
 
     return (
         <Fragment>
-            <Backdrop/>
-            {ReactDOM.createPortal(<ModalOverlay>{props.children}</ModalOverlay>, portalElement)};
+            <Backdrop onClick={props.onBackdropClick}>
+                {props.children}
+            </Backdrop>
         </Fragment>
     )
 }

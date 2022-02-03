@@ -1,6 +1,6 @@
 import classes from "./PickedIngredients.module.css"
 import useWindowDimensions from "../../../hooks/useWindowDimensions";
-import Icon from "../../../ui/IconPicker/Icon";
+import Icon from "../../../ui/Icon/Icon";
 
 const PickedIngredients = props => {
     const {width} = useWindowDimensions();

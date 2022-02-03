@@ -1,6 +1,4 @@
 import classes from "./IngredientsPicker.module.css"
-import {FontAwesomeIcon} from "@fortawesome/react-fontawesome";
-import {solid} from '@fortawesome/fontawesome-svg-core/import.macro'
 import Ingredient from "./Ingredient";
 import {useEffect, useState} from "react";
 import {useNavigate, useParams, useSearchParams} from "react-router-dom";

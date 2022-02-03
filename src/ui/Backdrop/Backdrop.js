@@ -6,7 +6,7 @@ const Backdrop = props => {
     const portalElement = document.getElementById("overlays")
 
     return <Fragment>
-        {ReactDOM.createPortal(<div className={classes.backdrop} onClick={props.onClick}/>, portalElement)}
+        {ReactDOM.createPortal(<div className={classes.backdrop} onClick={props.onClick}>{props.children}</div>, portalElement)}
     </Fragment>
 }
 

@@ -6,6 +6,7 @@
 
 .main {
     flex: 1 0 auto;
+    padding-bottom: 0.8rem;
 }
 
 .headerBreak {
@@ -13,7 +14,3 @@
     height: 0.2rem;
 }
 
-.footerBreak {
-    background-color: white;
-    height: 0.1rem;
-}

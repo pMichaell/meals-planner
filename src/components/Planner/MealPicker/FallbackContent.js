@@ -4,7 +4,7 @@ import {useNavigate} from "react-router-dom";
 import NavigationBar from "../../../ui/NavigationBar/NavigationBar";
 import BasicCard from "../../../ui/BasicCard/BasicCard";
 
-const FallbackContent = props => {
+const FallbackContent = () => {
     const navigate = useNavigate();
 
     const clickHandler = () => {

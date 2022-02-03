@@ -56,7 +56,7 @@ const MealPicker = () => {
 
     const bodyContents = isLoading ?
         <Spinner/> :
-        fetchedMeals.length === 0 && delayed?
+        fetchedMeals.length === 0 && delayed ?
             getNotFoundBody() :
             mapMeals();
 

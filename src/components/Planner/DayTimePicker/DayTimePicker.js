@@ -1,9 +1,8 @@
 import classes from "./DayTimePicker.module.css";
 import {useParams} from "react-router-dom";
-import NavigationBar from "../../ui/NavigationBar/NavigationBar";
-import BasicCard from "../../ui/BasicCard/BasicCard";
-import Icon from "../../ui/Icon/Icon";
-import IconContainer from "../../ui/Icon/IconContainer";
+import NavigationBar from "../../../ui/NavigationBar/NavigationBar";
+import BasicCard from "../../../ui/BasicCard/BasicCard";
+import IconContainer from "../../../ui/Icon/IconContainer";
 
 const DayTimePicker = () => {
     const params = useParams();

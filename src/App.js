@@ -10,20 +10,20 @@ import {useDispatch} from "react-redux";
 import MyAccountPage from "./pages/MyAccountPage";
 import RequireAuth from "./router/RequireAuth";
 import AboutPage from "./pages/AboutPage";
-import DayTimePicker from "./components/Planner/DayTimePicker";
+import DayTimePicker from "./components/Planner/DayTimePicker/DayTimePicker";
 import MealPicker from "./components/Planner/MealPicker/MealPicker";
-import PlannerIntroduction from "./components/Planner/PlannerIntroduction";
+import DayPicker from "./components/Planner/DayPicker/DayPicker";
 import IngredientsPicker from "./components/Planner/IngredientsPicker/IngredientsPicker";
 
 
 function App() {
     const dispatch = useDispatch();
 
-
     useEffect(() => {
         onAuthStateChanged(auth, user => {
             if(user) {
                 dispatch(setActiveUser({userEmail: user.email}))
+                const uid = user.uid;
             }
             else {
                 dispatch(setUserLoggedOut())
@@ -39,11 +39,11 @@ function App() {
                 <Route path="/login" element={<LoginPage/>}/>
                 <Route path="/account" element={<RequireAuth><MyAccountPage/></RequireAuth>}/>
                 <Route path="/planner">
-                    <Route index element={<PlannerIntroduction/>}/>
-                    <Route path=":day" element={<DayTimePicker/>}/>
+                    <Route index element={<RequireAuth><DayPicker/></RequireAuth>}/>
+                    <Route path=":day" element={<RequireAuth><DayTimePicker/></RequireAuth>}/>
                     <Route path=":day/:meal">
-                        <Route index element={<MealPicker/>}/>
-                        <Route path="ingredients" element={<IngredientsPicker/>}/>
+                        <Route index element={<RequireAuth><MealPicker/></RequireAuth>}/>
+                        <Route path="ingredients" element={<RequireAuth><IngredientsPicker/></RequireAuth>}/>
                     </Route>
                 </Route>
                 <Route path="/about" element={<AboutPage/>}/>

@@ -48,7 +48,7 @@
 
 .modal {
     width: 80%;
-    height: 33%;
+    height: 29%;
     margin-bottom: 10rem;
     z-index: 40;
     display: flex;
@@ -57,11 +57,13 @@
     justify-content: space-between;
     padding: 2rem;
     background: rgba(0, 0, 0, 0.9);
+    cursor: pointer;
 }
 
 .modalHeader {
     color: white;
     text-align: center;
+    cursor: pointer;
 }
 
 .modalButton {

@@ -1,7 +1,7 @@
-import classes from "./PlannerIntroduction.module.css"
-import NavigationBar from "../../ui/NavigationBar/NavigationBar";
+import classes from "./DayPicker.module.css"
+import NavigationBar from "../../../ui/NavigationBar/NavigationBar";
 
-const PlannerIntroduction = () => {
+const DayPicker = () => {
     return <div className={classes.container}>
         <div className={classes.headerContainer}>
             <h2>Pick a day!</h2>
@@ -18,4 +18,4 @@ const PlannerIntroduction = () => {
     </div>
 }
 
-export default PlannerIntroduction;
+export default DayPicker;

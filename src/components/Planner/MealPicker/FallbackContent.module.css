@@ -1,4 +1,4 @@
-.card {
+.navigationBar {
     width: 70%;
     display: flex;
     justify-content: center;
@@ -16,7 +16,7 @@
 }
 
 @media (min-width: 700px) {
-    .card {
+    .navigationBar {
         width: 25%;
     }
 }

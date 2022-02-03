@@ -10,7 +10,7 @@ import {useDispatch} from "react-redux";
 import MyAccountPage from "./pages/MyAccountPage";
 import RequireAuth from "./router/RequireAuth";
 import AboutPage from "./pages/AboutPage";
-import DayPlanner from "./components/Planner/DayPlanner";
+import DayTimePicker from "./components/Planner/DayTimePicker";
 import MealPicker from "./components/Planner/MealPicker/MealPicker";
 import PlannerIntroduction from "./components/Planner/PlannerIntroduction";
 import IngredientsPicker from "./components/Planner/IngredientsPicker/IngredientsPicker";
@@ -40,7 +40,7 @@ function App() {
                 <Route path="/account" element={<RequireAuth><MyAccountPage/></RequireAuth>}/>
                 <Route path="/planner">
                     <Route index element={<PlannerIntroduction/>}/>
-                    <Route path=":day" element={<DayPlanner/>}/>
+                    <Route path=":day" element={<DayTimePicker/>}/>
                     <Route path=":day/:meal">
                         <Route index element={<MealPicker/>}/>
                         <Route path="ingredients" element={<IngredientsPicker/>}/>

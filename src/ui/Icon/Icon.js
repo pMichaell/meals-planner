@@ -1,5 +1,18 @@
 import {FontAwesomeIcon} from "@fortawesome/react-fontawesome";
-import {faArrowRight, faCircleNotch, faFrownOpen} from '@fortawesome/free-solid-svg-icons'
+import {
+    faArrowRight,
+    faCircleNotch,
+    faFrownOpen,
+    faEgg,
+    faCoffee,
+    faBacon,
+    faPizzaSlice,
+    faHamburger,
+    faFish,
+    faCheese,
+    faWineBottle,
+    faGrinBeam
+} from '@fortawesome/free-solid-svg-icons'
 
 const Icon = props => {
     let {iconName, iconSize, isInverse, className, isSpin} = props.iconData;
@@ -7,7 +20,16 @@ const Icon = props => {
     const myIcons = {
         'arrow-right': faArrowRight,
         'circle-notch': faCircleNotch,
-        'frown-open': faFrownOpen
+        'frown-open': faFrownOpen,
+        'egg': faEgg,
+        'coffee': faCoffee,
+        'bacon': faBacon,
+        'pizza-slice': faPizzaSlice,
+        'hamburger': faHamburger,
+        'fish' : faFish,
+        'cheese': faCheese,
+        'wine-bottle': faWineBottle,
+        'grin-beam': faGrinBeam
     }
 
     const icon = myIcons[iconName];

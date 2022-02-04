@@ -14,6 +14,7 @@ import DayTimePicker from "./components/Planner/DayTimePicker/DayTimePicker";
 import MealPicker from "./components/Planner/MealPicker/MealPicker";
 import DayPicker from "./components/Planner/DayPicker/DayPicker";
 import IngredientsPicker from "./components/Planner/IngredientsPicker/IngredientsPicker";
+import {createUser} from "./firebase/firestore-functions";
 
 
 function App() {
@@ -22,8 +23,10 @@ function App() {
     useEffect(() => {
         onAuthStateChanged(auth, user => {
             if(user) {
-                dispatch(setActiveUser({userEmail: user.email}))
-                const uid = user.uid;
+                createUser(user.uid).catch(error => console.log(error));
+                dispatch(setActiveUser(
+                    {userEmail: user.email, userUid: user.uid}
+                ))
             }
             else {
                 dispatch(setUserLoggedOut())

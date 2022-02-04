@@ -1,4 +1,4 @@
-import {collection, getDocs, doc, setDoc, deleteDoc} from "firebase/firestore";
+import {collection, getDocs, doc, setDoc, deleteDoc, runTransaction} from "firebase/firestore";
 import {database} from "./firebase";
 
 export const getAllIngredients = async () => {
@@ -32,4 +32,15 @@ export const submitPickedIngredients = async (pickedIngredients) => {
     await setDoc(doc(database, "pickedIngredients", "0"), {
         pickedIngredients
     });
+}
+
+export const createUser = async (userUid) => {
+    const userDocRef = doc(database, "users", userUid);
+
+    await runTransaction(database, async (transaction) => {
+        const userDoc = await transaction.get(userDocRef);
+        if (userDoc.exists()) return Promise.reject("User exists");
+        console.log('after user exists');
+        await setDoc(userDocRef, {});
+    })
 }

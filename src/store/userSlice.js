@@ -1,9 +1,24 @@
-import {createSlice} from "@reduxjs/toolkit";
+import {createAsyncThunk, createSlice} from "@reduxjs/toolkit";
+import {onAuthStateChanged} from "firebase/auth";
+import {auth} from "../firebase/firebase";
+
+export const getUser = createAsyncThunk(
+    'user/getUser',
+    async () => {
+        await onAuthStateChanged(auth, (user) => {
+            if (user) {
+                return {userUid: user.uid, userEmail: user.email, userLoggedIn: true}
+            } else {
+                return {userUid: null, userEmail: null, userLoggedIn: false}
+            }
+        })
+    }
+)
 
 const initialState = {
-    userLoggedIn: false,
     userUid: null,
-    userEmail: null
+    userEmail: null,
+    userLoggedIn: false
 }
 
 const userSlice = createSlice({
@@ -15,15 +30,23 @@ const userSlice = createSlice({
             state.userEmail = action.payload.userEmail;
             state.userLoggedIn = true;
         },
-        setUserLoggedOut: (state)=> {
+        setUserLoggedOut: (state) => {
             state.userUid = null;
             state.userEmail = null
             state.userLoggedIn = false;
         }
+    },
+
+    extraReducers: builder => {
+        builder.addCase(getUser.fulfilled, (state, action) => {
+            state.userUid = action.payload.userUid;
+            state.userEmail = action.payload.userEmail;
+            state.userLoggedIn = action.payload.userLoggedIn;
+        })
     }
 });
 
-export const { setActiveUser, setUserLoggedOut } = userSlice.actions
+export const {setActiveUser, setUserLoggedOut} = userSlice.actions
 
 export const selectUserEmail = state => state.user.userEmail;
 

@@ -1,6 +1,6 @@
 import classes from "./NavigationBar.module.css"
 import {useNavigate} from "react-router-dom";
-import BasicCard from "../BasicCard/BasicCard";
+import BasicCard from "../BasicComponents/BasicCard/BasicCard";
 
 const NavigationBar = props => {
     const navigate = useNavigate();

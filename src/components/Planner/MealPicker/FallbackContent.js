@@ -2,7 +2,7 @@ import {Fragment} from "react";
 import classes from "./FallbackContent.module.css"
 import {useNavigate} from "react-router-dom";
 import NavigationBar from "../../../ui/NavigationBar/NavigationBar";
-import BasicCard from "../../../ui/BasicCard/BasicCard";
+import BasicCard from "../../../ui/BasicComponents/BasicCard/BasicCard";
 
 const FallbackContent = () => {
     const navigate = useNavigate();

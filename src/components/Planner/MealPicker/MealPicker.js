@@ -8,7 +8,7 @@ import FallbackContent from "./FallbackContent";
 import useWindowDimensions from "../../../hooks/useWindowDimensions";
 import Modal from "../../../ui/Modal/Modal";
 import {useParams} from "react-router-dom";
-import BasicCard from "../../../ui/BasicCard/BasicCard";
+import BasicCard from "../../../ui/BasicComponents/BasicCard/BasicCard";
 import NavigationBar from "../../../ui/NavigationBar/NavigationBar";
 
 
@@ -29,6 +29,7 @@ const MealPicker = () => {
 
 
     const articleClickHandler = mealId => {
+        //TODO add clicked meal to current meal plan
         setChosenMealId(mealId);
         setModalVisible(true);
     }

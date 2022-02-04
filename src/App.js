@@ -23,10 +23,10 @@ function App() {
     useEffect(() => {
         onAuthStateChanged(auth, user => {
             if (user) {
-                createUser(user.uid).catch(error => console.log(error));
                 dispatch(setActiveUser(
                     {userEmail: user.email, userUid: user.uid}
                 ))
+                createUser(user.uid).catch(error => console.log(error));
             } else {
                 dispatch(setUserLoggedOut())
             }
@@ -40,7 +40,6 @@ function App() {
                     <Route path="/" element={<MainPage/>}/>
                     <Route path="/login" element={<LoginPage/>}/>
                     <Route path="/account" element={<RequireAuth><MyAccountPage/></RequireAuth>}/>
-
                     <Route path="/planner">
                         <Route index element={<RequireAuth><DayPicker/></RequireAuth>}/>
                         <Route path=":day" element={<RequireAuth><DayTimePicker/></RequireAuth>}/>

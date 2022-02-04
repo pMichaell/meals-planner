@@ -1,5 +1,6 @@
-import {collection, getDocs, doc, setDoc, deleteDoc, runTransaction} from "firebase/firestore";
+import {collection, getDocs, doc, setDoc, deleteDoc, runTransaction, addDoc} from "firebase/firestore";
 import {database} from "./firebase";
+import {MealPlan, mealPlanConverter} from "./converters";
 
 export const getAllIngredients = async () => {
     const ingredientsCol = collection(database, "ingredients");
@@ -44,15 +45,12 @@ export const createUser = async (userUid) => {
     })
 }
 
-export const assignPlanToUser = async (userId) => {
-
+export const createPlan = async (userID) => {
+    const ref = doc(database, "mealPlans").withConverter(mealPlanConverter);
+    await addDoc(ref, new MealPlan(userID, ""));
 }
 
-export const createPlan = () => {
-
-}
-
-export const setMeal = async (day, dayTime, mealId) => {
+export const setMeal = async (day, dayTime, mealID) => {
 
 }
 

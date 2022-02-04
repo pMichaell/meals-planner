@@ -22,38 +22,38 @@ function App() {
 
     useEffect(() => {
         onAuthStateChanged(auth, user => {
-            if(user) {
+            if (user) {
                 createUser(user.uid).catch(error => console.log(error));
                 dispatch(setActiveUser(
                     {userEmail: user.email, userUid: user.uid}
                 ))
-            }
-            else {
+            } else {
                 dispatch(setUserLoggedOut())
             }
         })
     }, [dispatch])
 
-  return (
-      <Fragment>
-        <Layout>
+    return (
+        <Fragment>
+            <Layout>
                 <Routes>
-                <Route path="/" element={<MainPage/>}/>
-                <Route path="/login" element={<LoginPage/>}/>
-                <Route path="/account" element={<RequireAuth><MyAccountPage/></RequireAuth>}/>
-                <Route path="/planner">
-                    <Route index element={<RequireAuth><DayPicker/></RequireAuth>}/>
-                    <Route path=":day" element={<RequireAuth><DayTimePicker/></RequireAuth>}/>
-                    <Route path=":day/:meal">
-                        <Route index element={<RequireAuth><MealPicker/></RequireAuth>}/>
-                        <Route path="ingredients" element={<RequireAuth><IngredientsPicker/></RequireAuth>}/>
+                    <Route path="/" element={<MainPage/>}/>
+                    <Route path="/login" element={<LoginPage/>}/>
+                    <Route path="/account" element={<RequireAuth><MyAccountPage/></RequireAuth>}/>
+
+                    <Route path="/planner">
+                        <Route index element={<RequireAuth><DayPicker/></RequireAuth>}/>
+                        <Route path=":day" element={<RequireAuth><DayTimePicker/></RequireAuth>}/>
+                        <Route path=":day/:meal">
+                            <Route index element={<RequireAuth><MealPicker/></RequireAuth>}/>
+                            <Route path="ingredients" element={<RequireAuth><IngredientsPicker/></RequireAuth>}/>
+                        </Route>
                     </Route>
-                </Route>
-                <Route path="/about" element={<AboutPage/>}/>
-            </Routes>
-        </Layout>
-      </Fragment>
-  );
+                    <Route path="/about" element={<AboutPage/>}/>
+                </Routes>
+            </Layout>
+        </Fragment>
+    );
 }
 
 export default App;

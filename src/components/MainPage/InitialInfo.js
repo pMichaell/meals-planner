@@ -7,6 +7,8 @@ import {Link} from "react-router-dom";
 
 const InitialInfo = () => {
     //TODO change cta to be button as a whole
+
+
     return (
         <div className={classes.container}>
             <div>

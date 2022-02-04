@@ -40,7 +40,30 @@ export const createUser = async (userUid) => {
     await runTransaction(database, async (transaction) => {
         const userDoc = await transaction.get(userDocRef);
         if (userDoc.exists()) return Promise.reject("User exists");
-        console.log('after user exists');
         await setDoc(userDocRef, {});
     })
+}
+
+export const assignPlanToUser = async (userId) => {
+
+}
+
+export const createPlan = () => {
+
+}
+
+export const setMeal = async (day, dayTime, mealId) => {
+
+}
+
+export const setCurrentlyEditedPlan = async () => {
+
+}
+
+export const getCurrentlyEditedPlan = async () => {
+
+}
+
+export const deleteCurrentlyEditedPlan = async() => {
+
 }

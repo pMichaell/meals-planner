@@ -7,11 +7,11 @@ const NavigationBar = props => {
 
     const cardStyling = props.className;
 
-    const redirect = () => {
+    const clickHandler = () => {
         navigate(`${props.path}`);
     }
 
-    return <BasicCard className={cardStyling} onClick={redirect}>
+    return <BasicCard className={cardStyling} onClick={clickHandler}>
         <h2 className={classes.h2}>{props.name}</h2>
     </BasicCard>
 }

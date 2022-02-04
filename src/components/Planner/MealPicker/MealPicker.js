@@ -1,6 +1,6 @@
 import classes from "./MealPicker.module.css"
 import {Fragment, useEffect, useState} from "react";
-import CardArticle from "../../../ui/CardArticle/CardArticle";
+import MealArticle from "../../../ui/CardArticle/MealArticle";
 import Spinner from "../../../ui/Spinner/Spinner";
 import Icon from "../../../ui/Icon/Icon";
 import useFetchMeals from "../../../hooks/use-fetch-meals";
@@ -16,6 +16,7 @@ const MealPicker = () => {
     const {isLoading, fetchedMeals} = useFetchMeals();
     const [delayed, setDelayed] = useState(false);
     const [modalVisible, setModalVisible] = useState(false);
+    const [chosenMealId, setChosenMealId] = useState(null);
     const {width} = useWindowDimensions();
     const params = useParams();
 
@@ -27,7 +28,8 @@ const MealPicker = () => {
     }, [])
 
 
-    const articleClickHandler = () => {
+    const articleClickHandler = mealId => {
+        setChosenMealId(mealId);
         setModalVisible(true);
     }
 
@@ -39,7 +41,8 @@ const MealPicker = () => {
         return fetchedMeals.map(meal => {
             return <ul className={classes.mealsList} key={meal.idMeal}>
                 <li>
-                    <CardArticle
+                    <MealArticle
+                        mealId={meal.idMeal}
                         articleText={meal.strMeal}
                         articleImage={meal.strMealThumb}
                         onClick={articleClickHandler}

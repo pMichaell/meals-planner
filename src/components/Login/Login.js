@@ -18,7 +18,6 @@ const Login = () => {
 
     const authTypeChangeHandler = () => {
         setIsSignIn(prevState => !prevState)
-        console.log(isSignIn)
     }
 
     const signInHandler = (email, password) => {

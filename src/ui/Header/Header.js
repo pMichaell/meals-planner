@@ -1,18 +1,19 @@
 import classes from "./Header.module.css"
 import logo from "../../assets/apple_logo.png"
-import {Fragment} from "react";
+import {Fragment, useEffect} from "react";
 import SideMenuButton from "./SideMenuButton";
 import SideMenu from "../SideMenu/SideMenu";
 import {changeSideMenuState, selectSideMenu} from "../../store/uiSlice";
 import {Link, NavLink, useNavigate} from "react-router-dom";
 import {useDispatch, useSelector} from "react-redux";
-import {selectUserLoggedIn} from "../../store/userSlice";
 import {auth} from "../../firebase/firebase";
 import {signOut} from "firebase/auth"
+import useUserLogged from "../../hooks/use-user-logged";
+import useDelay from "../../hooks/use-delay";
 
 const Header = () => {
     const sideMenuVisible = useSelector(selectSideMenu);
-    const userIsLoggedIn = useSelector(selectUserLoggedIn);
+    const userLogged = useUserLogged();
     const dispatch = useDispatch();
     const navigate = useNavigate();
 
@@ -21,8 +22,8 @@ const Header = () => {
         console.log(sideMenuVisible)
     }
 
-    const signOutHandler = () => {
-        signOut(auth);
+    const signOutHandler = async () => {
+        await signOut(auth);
         navigate("/", {replace: true});
     }
 
@@ -30,12 +31,11 @@ const Header = () => {
         navigate("/", {replace: false});
     }
 
-    const navigationList = userIsLoggedIn ?
+    const navigationList = userLogged ?
         <ul className={classes.navigationList}>
             <li className={classes.navigationListItem}><Link to="/account">My Account</Link></li>
             <li className={classes.navigationListItem}><button onClick={signOutHandler}>Sign Out</button></li>
-        </ul>
-        :
+        </ul> :
         <ul className={classes.navigationList}>
             <li className={classes.navigationListItem}><NavLink
                 style={({ isActive }) => {
@@ -50,6 +50,8 @@ const Header = () => {
                 };
             }} to="/login">Sign in</NavLink></li>
         </ul>
+
+
 
     return (
         <Fragment>

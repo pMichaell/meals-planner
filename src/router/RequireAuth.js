@@ -1,32 +1,16 @@
-import {useSelector} from "react-redux";
-import {selectUserLoggedIn, setActiveUser, setUserLoggedOut} from "../store/userSlice";
-import {Navigate, useLocation, useNavigate} from "react-router-dom";
+import {Navigate, useLocation} from "react-router-dom";
 import {useEffect, useState} from "react";
 import {onAuthStateChanged} from "firebase/auth";
 import {auth} from "../firebase/firebase";
-import {createUser} from "../firebase/firestore-functions";
+import useUserLogged from "../hooks/use-user-logged";
 
 const RequireAuth = props => {
-    const userLoggedIn = useSelector(selectUserLoggedIn);
     let location = useLocation();
-    const navigate = useNavigate();
+    const userLogged = useUserLogged();
 
-    useEffect(() => {
-        const getUser = async () => {
-            let userLogged;
-            onAuthStateChanged(auth, user => {
-                userLogged = !!user;
-            }, () => {},
-                () => {
-                if(!userLogged) {
-                    navigate("/login", {replace: true})
-                }
-            })
-
-
-        }
-        getUser();
-    })
+    if (!userLogged) {
+        return <Navigate to="/login" state={{from: location}} replace/>;
+    }
 
     return props.children;
 }

@@ -1,8 +1,10 @@
 import classes from "./DayPicker.module.css"
 import NavigationBar from "../../../ui/NavigationBar/NavigationBar";
 import BasicContainer from "../../../ui/BasicComponents/BasicContainer/BasicContainer";
+import {useLocation} from "react-router-dom";
 
 const DayPicker = () => {
+
     return <BasicContainer className={classes.container}>
         <div className={classes.headerContainer}>
             <h2>Pick a day!</h2>

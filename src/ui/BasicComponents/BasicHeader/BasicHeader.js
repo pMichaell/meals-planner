@@ -1,4 +1,4 @@
-import classes from "../BasicContainer/BasicContainer.module.css"
+import classes from "./BasicHeader.module.css"
 
 const BasicHeader = props => {
     const className = `${props.className} ${classes.basic}`

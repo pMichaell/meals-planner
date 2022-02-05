@@ -1,6 +1,6 @@
 import classes from "./Header.module.css"
 import logo from "../../assets/apple_logo.png"
-import {Fragment, useEffect} from "react";
+import {Fragment} from "react";
 import SideMenuButton from "./SideMenuButton";
 import SideMenu from "../SideMenu/SideMenu";
 import {changeSideMenuState, selectSideMenu} from "../../store/uiSlice";
@@ -9,7 +9,6 @@ import {useDispatch, useSelector} from "react-redux";
 import {auth} from "../../firebase/firebase";
 import {signOut} from "firebase/auth"
 import useUserLogged from "../../hooks/use-user-logged";
-import useDelay from "../../hooks/use-delay";
 
 const Header = () => {
     const sideMenuVisible = useSelector(selectSideMenu);
@@ -28,7 +27,7 @@ const Header = () => {
     }
 
     const logoClickHandler = () => {
-        navigate("/", {replace: false});
+        navigate("/", {replace: true})
     }
 
     const navigationList = userLogged ?

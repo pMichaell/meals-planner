@@ -1,7 +1,4 @@
 import {Navigate, useLocation} from "react-router-dom";
-import {useEffect, useState} from "react";
-import {onAuthStateChanged} from "firebase/auth";
-import {auth} from "../firebase/firebase";
 import useUserLogged from "../hooks/use-user-logged";
 
 const RequireAuth = props => {

@@ -1,5 +1,5 @@
 import Layout from "./ui/Layout";
-import {Route, Routes} from "react-router-dom";
+import {Route, Routes, useLocation, useNavigationType} from "react-router-dom";
 import MainPage from "./pages/MainPage";
 import {Fragment, useEffect} from "react";
 import LoginPage from "./pages/LoginPage";
@@ -15,10 +15,13 @@ import MealPicker from "./components/Planner/MealPicker/MealPicker";
 import DayPicker from "./components/Planner/DayPicker/DayPicker";
 import IngredientsPicker from "./components/Planner/IngredientsPicker/IngredientsPicker";
 import {createUser} from "./firebase/firestore-functions";
+import NamePicker from "./components/Planner/NamePicker/NamePicker";
 
 
 function App() {
     const dispatch = useDispatch();
+    const location = useLocation();
+    const navType = useNavigationType();
 
     useEffect(() => {
         onAuthStateChanged(auth, user => {
@@ -31,7 +34,8 @@ function App() {
                 dispatch(setUserLoggedOut())
             }
         })
-    }, [dispatch])
+
+    }, [dispatch, location, navType])
 
     return (
         <Fragment>
@@ -47,6 +51,7 @@ function App() {
                             <Route index element={<RequireAuth><MealPicker/></RequireAuth>}/>
                             <Route path="ingredients" element={<RequireAuth><IngredientsPicker/></RequireAuth>}/>
                         </Route>
+                        <Route path="name" element={<RequireAuth><NamePicker/></RequireAuth>}/>
                     </Route>
                     <Route path="/about" element={<AboutPage/>}/>
                 </Routes>

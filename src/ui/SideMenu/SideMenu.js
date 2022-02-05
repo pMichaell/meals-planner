@@ -20,6 +20,8 @@ const SideMenu = props => {
     }
 
     return <Fragment>
+        {sideMenuVisible &&
+        <Backdrop onClick={backdropClickHandler}/>}
         <div className={styles}>
             <ul className={classes.sideMenuList}>
                 <li className={classes.sideMenuItem}><Link to="/planner" onClick={listItemClickHandler}>Get Started</Link></li>
@@ -27,8 +29,6 @@ const SideMenu = props => {
                 <li className={classes.sideMenuItem}><Link to="/pricing" onClick={listItemClickHandler}>Pricing</Link></li>
             </ul>
         </div>
-        {sideMenuVisible &&
-        <Backdrop onClick={backdropClickHandler}/>}
     </Fragment>
 }
 

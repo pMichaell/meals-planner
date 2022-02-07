@@ -1,11 +1,14 @@
 import {Navigate, useLocation} from "react-router-dom";
-import useUserSigned from "../hooks/use-user-signed";
+import {auth} from "../firebase/firebase";
+import {useAuthState} from "react-firebase-hooks/auth";
 
 const RequireAuth = props => {
-    let location = useLocation();
-    const userLogged = useUserSigned();
+    const [user, loading] = useAuthState(auth);
+    const location = useLocation();
 
-    if (!userLogged) {
+
+
+    if (!user && !loading) {
         return <Navigate to="/login" state={{from: location}} replace/>;
     }
 

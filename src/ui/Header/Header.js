@@ -8,11 +8,11 @@ import {Link, NavLink, useNavigate} from "react-router-dom";
 import {useDispatch, useSelector} from "react-redux";
 import {auth} from "../../firebase/firebase";
 import {signOut} from "firebase/auth"
-import useUserSigned from "../../hooks/use-user-signed";
+import {useAuthState} from "react-firebase-hooks/auth";
 
 const Header = () => {
     const sideMenuVisible = useSelector(selectSideMenu);
-    const userLogged = useUserSigned();
+    const [user, loading] = useAuthState(auth);
     const dispatch = useDispatch();
     const navigate = useNavigate();
 
@@ -30,7 +30,10 @@ const Header = () => {
         navigate("/", {replace: true})
     }
 
-    const navigationList = userLogged ?
+    console.log("In Header loading: " + loading);
+    console.log("In Header user " + user);
+
+    const navigationList = user ?
         <ul className={classes.navigationList}>
             <li className={classes.navigationListItem}><Link to="/account">My Account</Link></li>
             <li className={classes.navigationListItem}><button onClick={signOutHandler}>Sign Out</button></li>

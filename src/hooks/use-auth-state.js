@@ -8,6 +8,7 @@ import {createUser} from "../firebase/firestore-functions";
 const useAuthState = () => {
     const dispatch = useDispatch();
 
+    console.log("useAuthState re-render");
     useEffect(() => {
         onAuthStateChanged(auth, user => {
             if (user) {
@@ -18,8 +19,6 @@ const useAuthState = () => {
                 dispatch(setUserLoggedOut());
             }
         })
-
-
     }, [dispatch])
 }
 

@@ -1,17 +1,19 @@
 import {useEffect, useState} from "react";
 import {onAuthStateChanged} from "firebase/auth";
 import {auth} from "../firebase/firebase";
+import {useDispatch} from "react-redux";
 
-const useUserLogged = () => {
-    const [userLogged, setUserLogged] = useState(true);
+const useUserSigned = () => {
+    const [userSigned, setUserSigned] = useState(true);
+    const dispatch = useDispatch();
 
     useEffect(() => {
         const getData = async () => {
             await onAuthStateChanged(auth, user => {
                 if (user) {
-                    setUserLogged(true);
+                    setUserSigned(true);
                 } else {
-                    setUserLogged(false);
+                    setUserSigned(false);
                 }
             })
         }
@@ -19,11 +21,11 @@ const useUserLogged = () => {
         getData();
 
         return () => {
-            setUserLogged(false);
+            setUserSigned(false);
         }
-    }, [userLogged])
+    }, [dispatch])
 
-    return userLogged;
+    return userSigned;
 }
 
-export default useUserLogged;
+export default useUserSigned;

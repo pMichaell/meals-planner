@@ -8,11 +8,11 @@ import {Link, NavLink, useNavigate} from "react-router-dom";
 import {useDispatch, useSelector} from "react-redux";
 import {auth} from "../../firebase/firebase";
 import {signOut} from "firebase/auth"
-import useUserLogged from "../../hooks/use-user-logged";
+import useUserSigned from "../../hooks/use-user-signed";
 
 const Header = () => {
     const sideMenuVisible = useSelector(selectSideMenu);
-    const userLogged = useUserLogged();
+    const userLogged = useUserSigned();
     const dispatch = useDispatch();
     const navigate = useNavigate();
 
@@ -22,8 +22,8 @@ const Header = () => {
     }
 
     const signOutHandler = async () => {
-        await signOut(auth);
         navigate("/", {replace: true});
+        await signOut(auth);
     }
 
     const logoClickHandler = () => {

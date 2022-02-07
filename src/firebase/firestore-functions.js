@@ -35,13 +35,12 @@ export const submitPickedIngredients = async (pickedIngredients) => {
     });
 }
 
-export const createUser = async (userUid) => {
-    const userDocRef = doc(database, "users", userUid);
-
+export const createUser = async (user) => {
+    const userDocRef = doc(database, "users", user.uid);
     await runTransaction(database, async (transaction) => {
         const userDoc = await transaction.get(userDocRef);
-        if (userDoc.exists()) return Promise.reject("User exists");
-        await setDoc(userDocRef, {});
+        if (userDoc.exists()) return;
+        await setDoc(userDocRef, { email: user.email, displayName: user.displayName, photoURL: user.photoURL});
     })
 }
 

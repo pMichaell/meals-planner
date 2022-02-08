@@ -10,6 +10,7 @@ import Modal from "../../../ui/Modal/Modal";
 import {useParams} from "react-router-dom";
 import BasicCard from "../../../ui/BasicComponents/BasicCard/BasicCard";
 import NavigationBar from "../../../ui/NavigationBar/NavigationBar";
+import {useCookies} from "react-cookie";
 
 
 const MealPicker = () => {
@@ -17,6 +18,7 @@ const MealPicker = () => {
     const [delayed, setDelayed] = useState(false);
     const [modalVisible, setModalVisible] = useState(false);
     const [chosenMealId, setChosenMealId] = useState(null);
+    const [cookies, setCookie, removeCookie] = useCookies();
     const {width} = useWindowDimensions();
     const params = useParams();
 

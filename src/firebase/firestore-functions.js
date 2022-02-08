@@ -1,6 +1,7 @@
 import {collection, getDocs, doc, setDoc, deleteDoc, runTransaction, addDoc} from "firebase/firestore";
 import {database} from "./firebase";
-import {MealPlan, mealPlanConverter} from "./converters";
+import {mealPlanConverter} from "./converters";
+import MealPlan from "../classes/MealPlan";
 
 export const getAllIngredients = async () => {
     const ingredientsCol = collection(database, "ingredients");

@@ -1,14 +1,22 @@
 .container {
-    margin: 2rem 0 2rem 0;
-    text-align: center;
-}
-
-.descriptionContainer {
-    margin: 0;
     display: flex;
     flex-direction: column;
-    text-align: center;
+    align-items: center;
+    justify-content: space-between;
+    padding: 1rem 0;
+    width: 100%;
+    height: 100%;
+}
+
+.descriptionsContainer {
+    margin: 0;
+    padding: 0;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: space-evenly;
     color: white;
+    flex: 1 0 auto;
 }
 
 /*.container div {
@@ -16,43 +24,44 @@
     margin: 1rem 0;
 }*/
 
-.foo {
+.prosContainer {
+    width: 80%;
     display: flex;
     flex-direction: column;
-    justify-items: center;
+    justify-content: space-evenly;
     align-items: center;
+    margin: 1.2rem 0;
+}
+
+.prosContainer:first-of-type {
+    margin-top: 0;
 }
 
 .icon {
     height: auto;
     width: auto;
-    max-width: 8vh;
+    max-width: 9vh;
 }
 
 .header {
+    text-align: center;
     background: linear-gradient(227deg, #A9C9FF 0%, #FFBBEC 100%);
     -webkit-background-clip: text;
     -webkit-text-fill-color: transparent;
-    font-size: 2.5vh;
+    font-size: 1.4rem;
+    margin: 0.6rem 0.4rem 0;
 }
 
 .cta {
     display: flex;
-    margin: 1.5rem 0 1rem 0;
-    color: white;
-    height: 3rem;
-    justify-content: center;
-    align-items: center;
-}
-
-.cta div {
-    display: flex;
     width: 60%;
     justify-content: center;
     align-items: center;
-    height: 100%;
+    height: 3rem;
     background: linear-gradient(227deg, #A9C9FF 0%, #FFBBEC 100%);
     border-radius: 12px;
+    outline: none;
+    border: none;
 }
 
 .cta a {
@@ -60,6 +69,8 @@
     text-decoration: none;
     color: black;
     font-size: 1.4rem;
+    text-align: center;
+    width: 100%;
 }
 
 @media (min-width: 700px) {
@@ -71,8 +82,9 @@
         font-size: 2rem;
     }
 
-    .cta div {
-        width: 40%;
+    .cta {
+        width: 20%;
+        height: 3.5rem;
     }
 }
 

@@ -18,7 +18,6 @@ const Header = () => {
 
     const sideMenuHandler = () => {
         dispatch(changeSideMenuState())
-        console.log(sideMenuVisible)
     }
 
     const signOutHandler = async () => {
@@ -30,10 +29,9 @@ const Header = () => {
         navigate("/", {replace: true})
     }
 
-    console.log("In Header loading: " + loading);
-    console.log("In Header user " + user);
-
-    const navigationList = user ?
+    const navigationList = loading ?
+        <Fragment/> :
+        user ?
         <ul className={classes.navigationList}>
             <li className={classes.navigationListItem}><Link to="/account">My Account</Link></li>
             <li className={classes.navigationListItem}><button onClick={signOutHandler}>Sign Out</button></li>

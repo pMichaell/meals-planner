@@ -1,7 +1,7 @@
 import Layout from "./ui/Layout";
 import {Route, Routes} from "react-router-dom";
-import MainPage from "./pages/MainPage";
 import {Fragment} from "react";
+import MainPage from "./components/MainPage/MainPage";
 import LoginPage from "./pages/LoginPage";
 import MyAccountPage from "./pages/MyAccountPage";
 import RequireAuth from "./router/RequireAuth";

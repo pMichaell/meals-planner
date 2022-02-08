@@ -20,22 +20,6 @@ export const getAllIngredients = async () => {
     return ingredients;
 }
 
-export const getPickedIngredients = async () => {
-    let pickedIngredients;
-    const querySnapshot = await getDocs(collection(database, "pickedIngredients"));
-    querySnapshot.docs.forEach(doc => {
-        pickedIngredients = doc.data().pickedIngredients
-    })
-    return pickedIngredients
-}
-
-export const submitPickedIngredients = async (pickedIngredients) => {
-    await deleteDoc(doc(database, "pickedIngredients", "0"));
-    await setDoc(doc(database, "pickedIngredients", "0"), {
-        pickedIngredients
-    });
-}
-
 export const createUser = async (user) => {
     const userDocRef = doc(database, "users", user.uid);
     await runTransaction(database, async (transaction) => {

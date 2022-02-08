@@ -1,19 +1,17 @@
 import {useEffect, useState} from "react";
 import axios from "axios";
-import {getPickedIngredients} from "../firebase/firestore-functions";
+import {useCookies} from "react-cookie";
 
 const useFetchMeals = () => {
     const [isLoading, setIsLoading] = useState(false);
     const [fetchedMeals, setFetchedMeals] = useState([]);
+    const [cookies] = useCookies();
+
 
     useEffect(() => {
         const getData = async () => {
             setIsLoading(true);
-            const collectIngredients = async () => {
-                const fetchedIngredients = await getPickedIngredients();
-                return createIngrString(fetchedIngredients);
-            }
-            let ingredientsString = await collectIngredients();
+            let ingredientsString = getIngrFromCookies();
             fetchMeals(ingredientsString);
             setIsLoading(false);
         };
@@ -21,16 +19,13 @@ const useFetchMeals = () => {
         getData();
     }, [])
 
-
-
-    const createIngrString = fetchedIngredients => {
-        let ingredientsString = ""
-        fetchedIngredients.forEach(ingredient => {
-            ingredientsString = ingredientsString.concat(ingredient.strIngredient.replaceAll(" ", "_").toLowerCase());
-            ingredientsString = ingredientsString.concat(" ");
+    const getIngrFromCookies = () => {
+        const ingredients = cookies.ingredients;
+        let data = []
+        ingredients.forEach(ingredient => {
+            data = [...data, ingredient.strIngredient.replaceAll(" ", "_").toLowerCase()]
         })
-        ingredientsString = ingredientsString.trim().replaceAll(" ", ",");
-        return ingredientsString;
+        return data.join(",");
     }
 
     const fetchMeals = ingredientsString => {

@@ -11,7 +11,8 @@ import {
     faFish,
     faCheese,
     faWineBottle,
-    faGrinBeam
+    faGrinBeam,
+    faQuestion
 } from '@fortawesome/free-solid-svg-icons'
 
 const Icon = props => {
@@ -26,10 +27,11 @@ const Icon = props => {
         'bacon': faBacon,
         'pizza-slice': faPizzaSlice,
         'hamburger': faHamburger,
-        'fish' : faFish,
+        'fish': faFish,
         'cheese': faCheese,
         'wine-bottle': faWineBottle,
-        'grin-beam': faGrinBeam
+        'grin-beam': faGrinBeam,
+        'question-mark': faQuestion
     }
 
     const icon = myIcons[iconName];

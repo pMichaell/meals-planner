@@ -6,6 +6,7 @@ import PickedIngredients from "./PickedIngredients";
 import SearchBar from "../../SearchBar/SearchBar";
 import {getAllIngredients, submitPickedIngredients} from "../../../firebase/firestore-functions";
 import Spinner from "../../../ui/Spinner/Spinner";
+import {useCookies} from "react-cookie";
 
 
 const IngredientsPicker = () => {
@@ -13,6 +14,7 @@ const IngredientsPicker = () => {
     const [ingredients, setIngredients] = useState([]);
     const [isLoading, setIsLoading] = useState(false);
     const [searchParams] = useSearchParams();
+    const [cookies, setCookie, removeCookies] = useCookies();
     const navigate = useNavigate();
     const params = useParams();
 
@@ -29,7 +31,7 @@ const IngredientsPicker = () => {
     }, [])
 
     const submitIngredients = async() => {
-        await submitPickedIngredients(pickedIngredients);
+        setCookie("ingredients", pickedIngredients, {sameSite: "lax", });
         navigate('..');
     }
 

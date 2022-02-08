@@ -4,23 +4,19 @@ import pepper from "../../assets/pepper_icon.png"
 import happy from "../../assets/happy_icon.png"
 import plan from "../../assets/plan_icon.png"
 import {Link} from "react-router-dom";
-import BasicContainer from "../../ui/BasicComponents/BasicContainer/BasicContainer";
 import {useCookies} from "react-cookie";
-import MealPlan from "../../classes/MealPlan";
-import {useSelector} from "react-redux";
-import {selectUserId} from "../../store/userSlice";
+import Meals from "../../classes/Meals";
 
 const MainPage = () => {
-    const [cookies, setCookie, removeCookies] = useCookies();
-    const userId = useSelector(selectUserId);
+    const [cookies, setCookie] = useCookies();
 
     const onClickHandler = () => {
         createNewPlan();
     }
 
     const createNewPlan = () => {
-        if (userId) {
-            setCookie('meal-plan', new MealPlan())
+        if (!cookies.plan) {
+            setCookie('plan', new Meals(), {sameSite: "lax"});
             console.log("cookie created");
         }
     }

@@ -7,10 +7,11 @@ import useFetchMeals from "../../../hooks/use-fetch-meals";
 import FallbackContent from "./FallbackContent";
 import useWindowDimensions from "../../../hooks/useWindowDimensions";
 import Modal from "../../../ui/Modal/Modal";
-import {useParams} from "react-router-dom";
+import {Link, useParams} from "react-router-dom";
 import BasicCard from "../../../ui/BasicComponents/BasicCard/BasicCard";
-import NavigationBar from "../../../ui/NavigationBar/NavigationBar";
 import {useCookies} from "react-cookie";
+import BasicButton from "../../../ui/BasicComponents/BasicButton/BasicButton";
+import Meals from "../../../classes/Meals";
 
 
 const MealPicker = () => {
@@ -39,6 +40,22 @@ const MealPicker = () => {
     const backDropClickHandler = () => {
         setModalVisible(false);
     }
+
+    const modalButtonClickHandler = () => {
+        let plan = cookies.plan;
+        for (let [day, meals] of Object.entries(plan)) {
+            if (day === params.day) {
+                for (let mealName of Object.keys(meals)) {
+                    if(mealName === params.meal) {
+                        meals[params.meal] = chosenMealId;
+                    }
+                }
+            }
+        }
+        console.log(plan);
+        setCookie('plan', plan, {sameSite: "lax"});
+    }
+
 
     const mapMeals = () => {
         return fetchedMeals.map(meal => {
@@ -92,7 +109,14 @@ const MealPicker = () => {
                 <h2 className={classes.modalHeader}>
                     Are you sure you would like to pick this meal for your {params.meal}?
                 </h2>
-                <NavigationBar name="Yes" path={`/planner/${params.day}`} className={classes.modalButton}/>
+                <Icon iconData={{
+                    iconName: 'question-mark',
+                    iconSize: width > 700 ? "4x" : "2x",
+                    isInverse: true
+                }}/>
+                <BasicButton className={classes.modalButton} onClick={modalButtonClickHandler}>
+                <Link to={`/planner/${params.day}`} className={classes.modalLink}>Yes</Link>
+                </BasicButton>
             </BasicCard>
         </Modal>
 

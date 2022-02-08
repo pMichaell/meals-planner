@@ -3,7 +3,7 @@
     flex-direction: column;
     align-items: center;
     justify-content: space-between;
-    padding: 1rem 0;
+    padding: 1.5rem 0;
     width: 100%;
     height: 100%;
 }
@@ -14,7 +14,7 @@
     display: flex;
     flex-direction: column;
     align-items: center;
-    justify-content: space-evenly;
+    justify-content: space-around;
     color: white;
     flex: 1 0 auto;
 }
@@ -48,7 +48,7 @@
     background: linear-gradient(227deg, #A9C9FF 0%, #FFBBEC 100%);
     -webkit-background-clip: text;
     -webkit-text-fill-color: transparent;
-    font-size: 1.4rem;
+    font-size: 1.5rem;
     margin: 0.6rem 0.4rem 0;
 }
 
@@ -64,7 +64,7 @@
     border: none;
 }
 
-.cta a {
+.link {
     justify-self: center;
     text-decoration: none;
     color: black;
@@ -75,7 +75,7 @@
 
 @media (min-width: 700px) {
     .icon {
-        max-width: 11vh;
+        max-width: 10vh;
     }
 
     .header {
@@ -85,6 +85,10 @@
     .cta {
         width: 20%;
         height: 3.5rem;
+    }
+
+    .link {
+        font-size: 1.7rem;
     }
 }
 

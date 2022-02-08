@@ -1,9 +1,9 @@
 import Meals from "./Meals";
 
 export default class MealPlan {
-    constructor(userId, name) {
+    constructor(userId) {
         this.userId = userId;
-        this.name = name;
+        this.name = "";
         this.meals = new Meals();
         this.finished = false;
     }

@@ -5,9 +5,25 @@ import happy from "../../assets/happy_icon.png"
 import plan from "../../assets/plan_icon.png"
 import {Link} from "react-router-dom";
 import BasicContainer from "../../ui/BasicComponents/BasicContainer/BasicContainer";
+import {useCookies} from "react-cookie";
+import MealPlan from "../../classes/MealPlan";
+import {useSelector} from "react-redux";
+import {selectUserId} from "../../store/userSlice";
 
 const MainPage = () => {
-    //TODO change cta to be button as a whole
+    const [cookies, setCookie, removeCookies] = useCookies();
+    const userId = useSelector(selectUserId);
+
+    const onClickHandler = () => {
+        createNewPlan();
+    }
+
+    const createNewPlan = () => {
+        if (userId) {
+            setCookie('meal-plan', new MealPlan())
+            console.log("cookie created");
+        }
+    }
 
     return (
         <div className={classes.container}>
@@ -31,7 +47,7 @@ const MainPage = () => {
                     </div>
                 </div>
 
-            <button className={classes.cta}><Link to="/planner">Get Started</Link></button>
+            <button className={classes.cta} onClick={onClickHandler}><Link to="/planner" className={classes.link}>Get Started</Link></button>
         </div>
     )
 }

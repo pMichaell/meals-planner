@@ -52,4 +52,6 @@ export const selectUserEmail = state => state.user.userEmail;
 
 export const selectUserLoggedIn = state => state.user.userLoggedIn;
 
+export const selectUserId = state => state.user.userLoggedIn;
+
 export default userSlice.reducer;

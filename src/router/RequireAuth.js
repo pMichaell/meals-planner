@@ -7,7 +7,6 @@ const RequireAuth = props => {
     const location = useLocation();
 
 
-
     if (!user && !loading) {
         return <Navigate to="/login" state={{from: location}} replace/>;
     }

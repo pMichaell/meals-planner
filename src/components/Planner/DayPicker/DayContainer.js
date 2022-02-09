@@ -1,17 +1,27 @@
 import NavigationBar from "../../../ui/NavigationBar/NavigationBar";
 import classes from "./DayContainer.module.css";
 import useChosenMeals from "../../../hooks/use-chosen-meals";
+import Icon from "../../../ui/Icon/Icon";
+import useIconSize from "../../../hooks/use-icon-size";
 
 const DayContainer = props => {
     const [chosenMeals, allChosen] = useChosenMeals(props.day);
+    const iconSize = useIconSize("2x", "4x");
 
-    let style = props.className
+    let cardStyle = `${classes.dayContainer} ${props.className}`
+    let checkmarkStyle;
 
-    if(!Object.values(chosenMeals).includes(false)) {
-        style = `${classes.chosen} ${props.className}`
+    let dayMealsChosen = !Object.values(chosenMeals).includes(false)
+
+    if (dayMealsChosen) {
+        checkmarkStyle = classes.checkMarkChecked
     }
 
-    return <NavigationBar name={props.day} path={props.path} className={style}/>
+    return <button className={cardStyle}>
+        <h2 className={classes.header}>{props.day}</h2>
+        {dayMealsChosen &&
+        <Icon iconData={{iconName: 'checkmark', iconSize, isInverse: true, className: checkmarkStyle}}/>}
+    </button>
 }
 
 export default DayContainer

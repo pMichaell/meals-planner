@@ -1,0 +1,20 @@
+.arrowDiv {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    height: 4rem;
+    width: 4rem;
+    border: 2px solid white;
+    background: black;
+    outline: none;
+    padding: 0;
+}
+
+.arrowDiv:hover {
+    background: white;
+    border: 2px solid black
+}
+
+.arrowDiv:hover .arrow {
+    color: black;
+}

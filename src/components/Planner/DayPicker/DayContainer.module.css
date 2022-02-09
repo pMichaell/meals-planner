@@ -1,6 +1,23 @@
 .chosen {
     -webkit-box-shadow: 0px 0px 32px 9px rgba(170, 255, 0, 0.39);
     -moz-box-shadow: 0px 0px 32px 9px rgba(170, 255, 0, 0.39);
-    box-shadow: 0px 0px 32px 9px rgba(170, 255, 0, 0.39);
+    box-shadow: 0px 0px 32px 9px rgba(170, 255, 0, 0.7);
     color: rgb(170, 255, 0);
 }
+
+.checkMarkChecked {
+    color: rgb(170, 255, 0);
+}
+
+.dayContainer {
+    width: 60%;
+    display: flex;
+    justify-content: space-between;
+    padding: 0 0.8rem;
+    outline: none;
+}
+
+.header {
+    color: white;
+}
+

@@ -2,23 +2,36 @@ import classes from "./DayPicker.module.css"
 import BasicContainer from "../../../ui/BasicComponents/BasicContainer/BasicContainer";
 import DayContainer from "./DayContainer";
 import useChosenMeals from "../../../hooks/use-chosen-meals";
+import Icon from "../../../ui/Icon/Icon";
+import useIconSize from "../../../hooks/use-icon-size";
+import ArrowButton from "../../../ui/ArrowButton/ArrowButton";
 
 const DayPicker = () => {
     const [chosenMeals, allChosen] = useChosenMeals()
+    const iconSize = useIconSize("3x", "4x");
+
+    const arrowClickHandler = () => {
+
+    }
+
+    let headerContents = allChosen ? "Submit your new plan!" : "Pick meals for each of the days!"
+
     return <BasicContainer className={classes.container}>
         <div className={classes.headerContainer}>
-            <h1>Pick a day!</h1>
+            <h2>{headerContents}</h2>
         </div>
         <div className={classes.daysContainer}>
-            <DayContainer day="monday" path="./monday" className={classes.card}/>
-            <DayContainer day="tuesday" path="./tuesday" className={classes.card}/>
-            <DayContainer day="wednesday" path="./wednesday" className={classes.card}/>
-            <DayContainer day="thursday" path="./thursday" className={classes.card}/>
-            <DayContainer day="friday" path="./friday" className={classes.card}/>
-            <DayContainer day="saturday" path="./saturday" className={classes.card}/>
-            <DayContainer day="sunday" path="./sunday" className={classes.card}/>
+            <DayContainer day="monday" path="./monday" className={classes.dayCard}/>
+            <DayContainer day="tuesday" path="./tuesday" className={classes.dayCard}/>
+            <DayContainer day="wednesday" path="./wednesday" className={classes.dayCard}/>
+            <DayContainer day="thursday" path="./thursday" className={classes.dayCard}/>
+            <DayContainer day="friday" path="./friday" className={classes.dayCard}/>
+            <DayContainer day="saturday" path="./saturday" className={classes.dayCard}/>
+            <DayContainer day="sunday" path="./sunday" className={classes.dayCard}/>
         </div>
-        {allChosen && <div style={{color: "white"}}>All Chosen</div>}
+        {allChosen &&
+        <ArrowButton onClick={arrowClickHandler} iconSize={iconSize} className={classes.arrow}/>}
+
     </BasicContainer>
 }
 

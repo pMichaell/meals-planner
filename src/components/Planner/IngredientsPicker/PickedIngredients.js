@@ -2,6 +2,7 @@ import classes from "./PickedIngredients.module.css"
 import useWindowDimensions from "../../../hooks/use-window-dimensions";
 import Icon from "../../../ui/Icon/Icon";
 import useIconSize from "../../../hooks/use-icon-size";
+import ArrowButton from "../../../ui/ArrowButton/ArrowButton";
 
 const PickedIngredients = props => {
     const iconSize = useIconSize("2x", "4x");
@@ -13,9 +14,7 @@ const PickedIngredients = props => {
                 {props.getIngredients(props.ingredients)}
             </div>
             <div className={classes.arrowContainer}>
-                <div className={classes.arrowDiv} onClick={props.navigateToMeal}>
-                    <Icon iconData={{iconName: 'arrow-right', iconSize: iconSize, isInverse: true, className: classes.arrow, isSpin: false}}/>
-                </div>
+                <ArrowButton onClick={props.navigateToMeal} iconSize={iconSize}/>
             </div>
         </div>
     </div>

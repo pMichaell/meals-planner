@@ -32,7 +32,7 @@ const IngredientsPicker = () => {
 
     const submitIngredients = async() => {
         setCookie("ingredients", pickedIngredients, {sameSite: "lax", });
-        navigate('..');
+        navigate('..', { replace: true });
     }
 
     const addIngredient = ingredient => {

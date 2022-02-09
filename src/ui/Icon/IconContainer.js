@@ -5,8 +5,6 @@ const IconContainer = props => {
     const {icons, iconSize, isInverse, classNames, isSpin} = props
     const {containerClass, iconClass} = classNames;
 
-
-
     return <div className={containerClass}>
         {icons.map(icon => {
             const id = Math.random();

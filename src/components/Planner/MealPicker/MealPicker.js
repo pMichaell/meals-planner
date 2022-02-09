@@ -114,7 +114,7 @@ const MealPicker = () => {
                     isInverse: true
                 }}/>
                 <BasicButton className={classes.modalButton} onClick={modalButtonClickHandler}>
-                <Link to={`/planner/${params.day}`} className={classes.modalLink}>Yes</Link>
+                <Link to={`/planner/${params.day}`} replace className={classes.modalLink}>Yes</Link>
                 </BasicButton>
             </BasicCard>
         </Modal>

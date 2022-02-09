@@ -51,6 +51,10 @@
 
 }
 
+.chosen {
+    color: rgb(170, 255, 0);
+}
+
 
 @media (min-width: 700px) {
     .basicCard {

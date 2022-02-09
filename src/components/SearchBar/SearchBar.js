@@ -2,7 +2,7 @@ import classes from "./SearchBar.module.css";
 import {FontAwesomeIcon} from "@fortawesome/react-fontawesome";
 import { solid } from '@fortawesome/fontawesome-svg-core/import.macro'
 import {useSearchParams} from "react-router-dom";
-import useWindowDimensions from "../../hooks/useWindowDimensions";
+import useWindowDimensions from "../../hooks/use-window-dimensions";
 
 const SearchBar = props => {
     const [searchParams, setSearchParams] = useSearchParams();

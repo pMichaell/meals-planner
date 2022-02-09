@@ -5,13 +5,12 @@ import Spinner from "../../../ui/Spinner/Spinner";
 import Icon from "../../../ui/Icon/Icon";
 import useFetchMeals from "../../../hooks/use-fetch-meals";
 import FallbackContent from "./FallbackContent";
-import useWindowDimensions from "../../../hooks/useWindowDimensions";
+import useWindowDimensions from "../../../hooks/use-window-dimensions";
 import Modal from "../../../ui/Modal/Modal";
 import {Link, useParams} from "react-router-dom";
 import BasicCard from "../../../ui/BasicComponents/BasicCard/BasicCard";
 import {useCookies} from "react-cookie";
 import BasicButton from "../../../ui/BasicComponents/BasicButton/BasicButton";
-import Meals from "../../../classes/Meals";
 
 
 const MealPicker = () => {

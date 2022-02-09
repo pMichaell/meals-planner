@@ -1,11 +1,10 @@
 import classes from "./PickedIngredients.module.css"
-import useWindowDimensions from "../../../hooks/useWindowDimensions";
+import useWindowDimensions from "../../../hooks/use-window-dimensions";
 import Icon from "../../../ui/Icon/Icon";
+import useIconSize from "../../../hooks/use-icon-size";
 
 const PickedIngredients = props => {
-    const {width} = useWindowDimensions();
-
-    const iconSize = width > 700 ? "4x" : "2x";
+    const iconSize = useIconSize("2x", "4x");
 
     return <div className={classes.div}>
         <div className={classes.headerContainer}><h2>Picked ingredients:</h2></div>

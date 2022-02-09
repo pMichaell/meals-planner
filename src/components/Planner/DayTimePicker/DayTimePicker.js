@@ -1,39 +1,30 @@
 import classes from "./DayTimePicker.module.css";
-import {useParams} from "react-router-dom";
+import {useNavigate, useParams} from "react-router-dom";
 import NavigationBar from "../../../ui/NavigationBar/NavigationBar";
 import BasicCard from "../../../ui/BasicComponents/BasicCard/BasicCard";
 import IconContainer from "../../../ui/Icon/IconContainer";
 import {useCookies} from "react-cookie";
 import {useEffect, useState} from "react";
+import useChosenMeals from "../../../hooks/use-chosen-meals";
+import Icon from "../../../ui/Icon/Icon";
+import useIconSize from "../../../hooks/use-icon-size";
 
 const DayTimePicker = () => {
     const params = useParams();
     const [cookies] = useCookies(['plan']);
-    const [chosenMeals, setChosenMeals] = useState({breakfast: false, dinner: false, supper: false})
-
-    useEffect(() => {
-        const checkIfChosen = () => {
-            let plan = {...cookies.plan};
-            for (let [day, meals] of Object.entries(plan)) {
-                if (day === params.day) {
-                    for (let daytime of Object.keys(meals)) {
-                        if (meals[daytime].length !== 0) {
-                            console.log(meals[daytime])
-                            let updatedValue = {[daytime]: true}
-                            setChosenMeals(prevState => ({
-                                ...prevState,
-                                ...updatedValue
-                            }))
-                        }
-                    }
-                }
-            }
-        }
-        checkIfChosen();
-    }, [params, cookies])
+    const [chosenMeals] = useChosenMeals(params.day);
+    const iconSize = useIconSize("2x", "4x");
+    const navigate = useNavigate();
 
     const getActiveStyle = (dayTime) => {
+        console.log(chosenMeals)
         return chosenMeals[dayTime] ? classes.chosen : "";
+    }
+
+    let allMealsChosen = !Object.values(chosenMeals).includes(false);
+
+    const arrowClickHandler = () => {
+        navigate("/planner", {replace: true})
     }
 
     return <div className={classes.div}>
@@ -66,6 +57,17 @@ const DayTimePicker = () => {
                                isSpin={false}/>
                 <NavigationBar name="supper" path="./supper/ingredients" className={classes.navigationBar}/>
             </BasicCard>
+            {allMealsChosen &&
+            <button onClick={arrowClickHandler} className={classes.arrowDiv}>
+                <Icon iconData={{
+                iconName: 'arrow-right',
+                iconSize: iconSize,
+                isInverse: true,
+                className: classes.arrow,
+                isSpin: false
+            }}/>
+            </button>
+            }
         </div>
     </div>
 }

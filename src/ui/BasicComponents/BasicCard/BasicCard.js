@@ -1,7 +1,7 @@
 import classes from "./BasicCard.module.css"
 
 const BasicCard = props => {
-    const styles = `${classes.basicCard} ${props.className} `
+    const styles = `${props.className} ${classes.basicCard}`
 
     return <div className={styles} onClick={props.onClick}>
         {props.children}

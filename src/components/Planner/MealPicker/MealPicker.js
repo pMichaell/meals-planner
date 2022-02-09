@@ -19,7 +19,7 @@ const MealPicker = () => {
     const [delayed, setDelayed] = useState(false);
     const [modalVisible, setModalVisible] = useState(false);
     const [chosenMealId, setChosenMealId] = useState(null);
-    const [cookies, setCookie, removeCookie] = useCookies();
+    const [cookies, setCookie] = useCookies();
     const {width} = useWindowDimensions();
     const params = useParams();
 
@@ -32,7 +32,6 @@ const MealPicker = () => {
 
 
     const articleClickHandler = mealId => {
-        //TODO add clicked meal to current meal plan
         setChosenMealId(mealId);
         setModalVisible(true);
     }
@@ -52,7 +51,7 @@ const MealPicker = () => {
                 }
             }
         }
-        console.log(plan);
+        // console.log(plan);
         setCookie('plan', plan, {sameSite: "lax"});
     }
 

@@ -6,9 +6,15 @@ const MealArticle = props => {
         props.onClick(props.mealId);
     }
 
+    if(props?.size) {
+
+    }
+
     return <article className={classes.article} onClick={clickHandler}>
         <img src={props.articleImage} alt={`${props.articleText}`} className={classes.image}/>
-        <div className={classes.layout}><h2 className={classes.mealName}>{props.articleText}</h2></div>
+        <div className={classes.layout}>
+            <h2 className={classes.mealName}>{props.articleText}</h2>
+        </div>
     </article>
 }
 

@@ -1,6 +1,7 @@
 import {FontAwesomeIcon} from "@fortawesome/react-fontawesome";
 import {
     faArrowRight,
+    faArrowLeft,
     faCircleNotch,
     faFrownOpen,
     faEgg,
@@ -21,6 +22,7 @@ const Icon = props => {
 
     const myIcons = {
         'arrow-right': faArrowRight,
+        'arrow-left': faArrowLeft,
         'circle-notch': faCircleNotch,
         'frown-open': faFrownOpen,
         'egg': faEgg,

@@ -12,6 +12,7 @@ import DayPicker from "./components/Planner/DayPicker/DayPicker";
 import IngredientsPicker from "./components/Planner/IngredientsPicker/IngredientsPicker";
 import NamePicker from "./components/Planner/NamePicker/NamePicker";
 import useAuthState from "./hooks/use-auth-state";
+import Summary from "./components/Planner/Summary/Summary";
 
 
 function App() {
@@ -31,6 +32,7 @@ function App() {
                             <Route index element={<RequireAuth><MealPicker/></RequireAuth>}/>
                             <Route path="ingredients" element={<RequireAuth><IngredientsPicker/></RequireAuth>}/>
                         </Route>
+                        <Route path="summary" element={<RequireAuth><Summary/></RequireAuth>}/>
                         <Route path="name" element={<RequireAuth><NamePicker/></RequireAuth>}/>
                     </Route>
                     <Route path="/about" element={<AboutPage/>}/>

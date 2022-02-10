@@ -1,0 +1,15 @@
+.container {
+    display: flex;
+
+}
+
+.navigationBar {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    flex: 0 0;
+}
+
+.mealsContainer {
+    flex: 1 0;
+}

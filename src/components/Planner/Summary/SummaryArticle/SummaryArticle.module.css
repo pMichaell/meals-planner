@@ -1,0 +1,18 @@
+.article {
+    height: 20vh;
+    width: 60vh;
+    display: flex;
+    overflow: hidden;
+}
+
+.dayTimeHeader {
+
+}
+
+.mealImg {
+    object-fit: cover;
+}
+
+.mealName {
+
+}

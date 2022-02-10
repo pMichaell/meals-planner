@@ -51,19 +51,19 @@ const Summary = () => {
         dispatchMealsReducer({type: "LEFT"})
     }
 
-    return <BasicContainer>
+    return <div className={classes.container}>
         <div className={classes.navigationBar}>
             <ArrowButton direction="left" iconSize={iconSize} onClick={leftArrowHandler} className={classes.arrowDiv}/>
             <h1>{days[mealsState.currentIndex]}</h1>
             <ArrowButton iconSize={iconSize} onClick={rightArrowHandler} className={classes.arrowDiv}/>
         </div>
-        <ul className={classes.mealsContainer}>
+        <div className={classes.mealsContainer}>
             {mealsArray.map(meal => {
-                return <li key={meal[0]}><SummaryArticle mealID={meal[1]} dayTime={meal[0]}/></li>
+                return <SummaryArticle key={meal[0]} mealID={meal[1]} dayTime={meal[0]}/>
             })
             })
-        </ul>
-    </BasicContainer>
+        </div>
+    </div>
 }
 
 export default Summary;

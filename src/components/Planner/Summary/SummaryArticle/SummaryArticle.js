@@ -7,20 +7,29 @@ import {Fragment} from "react";
 const SummaryArticle = props => {
     const [mealData, loading] = useFetchMealId(props.mealID);
 
+    let style = loading ? `${classes.loading} ${classes.article}` : classes.article;
+
     const contents = loading ?
         <Spinner/>
         :
-        <Fragment>
-            <img src={mealData.strMealThumb} alt={mealData.strMealThumb}/>
+        <div className={classes.div}>
+            <img src={mealData.strMealThumb} alt={mealData.strMealThumb} className={classes.mealImg}/>
             <div className={classes.headersDiv}>
                 <h1>{props.dayTime}</h1>
+                <div className={classes.headersBreak}/>
                 <h1>{mealData.strMeal}</h1>
             </div>
-        </Fragment>
+        </div>
 
-    return <BasicCard className={classes.article}>
-        {contents}
-    </BasicCard>
+    return <div id='articleDiv' className={{backgroundImage:`url(${mealData.strMealThumb})`}}>
+        <img src={mealData.strMealThumb} alt={mealData.strMealThumb} className={classes.mealImg}/>
+            <div className={classes.headersDiv}>
+                <h1>{props.dayTime}</h1>
+                <div className={classes.headersBreak}/>
+                <h1>{mealData.strMeal}</h1>
+            </div>
+
+    </div>
 
 }
 

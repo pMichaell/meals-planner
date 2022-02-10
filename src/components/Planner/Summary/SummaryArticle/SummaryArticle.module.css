@@ -1,33 +1,16 @@
-.article {
+ #articleDiv {
     height: 20vh;
-    width: 80vw;
+    width: 80%;
     display: flex;
-    overflow: hidden;
-    justify-content: space-around;
-}
-
-.headersDiv {
-    display: flex;
-    flex-direction: column;
-    justify-content: space-evenly;
-}
-
-h1 {
-    font-size: 1.5rem;
-    text-align: right;
+    align-content: space-between;
 }
 
 .mealImg {
     object-fit: cover;
+    object-position: 50% 50%;
 }
 
-.mealName {
-
-}
-
-
-@media (min-width: 500px) {
-    h1 {
-        font-size: unset;
-    }
+h1 {
+    text-align: right;
+    font-size: 1.5rem;
 }

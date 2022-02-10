@@ -6,19 +6,20 @@ import {Fragment} from "react";
 
 const SummaryArticle = props => {
     const [mealData, loading] = useFetchMealId(props.mealID);
-    console.log(props.mealID);
 
     const contents = loading ?
         <Spinner/>
         :
         <Fragment>
-            <h3></h3>
-            <img src="" alt=""/>
-            <h2></h2>
+            <img src={mealData.strMealThumb} alt={mealData.strMealThumb}/>
+            <div className={classes.headersDiv}>
+                <h1>{props.dayTime}</h1>
+                <h1>{mealData.strMeal}</h1>
+            </div>
         </Fragment>
 
     return <BasicCard className={classes.article}>
-
+        {contents}
     </BasicCard>
 
 }

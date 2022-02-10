@@ -11,26 +11,26 @@ const days = ['monday', 'tuesday', 'wednesday', 'thursday', 'friday', 'saturday'
 
 const defaultMealsState = {
     currentIndex: 0,
-    mealsForCurrentDay: {breakfast: "", dinner: "", supper: ""}
 }
 
 const mealsReducer = (state, action) => {
     let newIndex
-    switch (action.type) {
-        case "RIGHT":
-            newIndex = state.currentIndex === 7 ? 0 : state.currentIndex++;
-            return {
-                currentIndex: newIndex,
-                mealsForCurrentDay: state.mealsForCurrentDay
-            }
-        case 'LEFT':
-            newIndex = state.currentIndex === 0 ? 6 : state.currentIndex--;
-            return {
-                currentIndex: newIndex,
-                mealsForCurrentDay: state.mealsForCurrentDay
-            }
+    if(action.type === "RIGHT") {
+        newIndex = state.currentIndex === 6 ? 0 : ++state.currentIndex;
+        console.log(newIndex)
+        return {
+            currentIndex: newIndex,
+        }
+    }
+    if (action.type === "LEFT") {
+        newIndex = state.currentIndex === 0 ? 6 : --state.currentIndex;
+        console.log(newIndex)
+        return {
+            currentIndex: newIndex,
+        }
     }
 }
+
 
 
 const Summary = () => {
@@ -38,10 +38,10 @@ const Summary = () => {
     const [mealsState, dispatchMealsReducer] = useReducer(mealsReducer, defaultMealsState);
     const iconSize = useIconSize("3x", "4x");
 
-    console.log(cookies.plan[days[mealsState.currentIndex]])
-
+    console.log(mealsState.currentIndex)
 
     const mealsArray = Object.entries(cookies.plan[days[mealsState.currentIndex]]);
+
 
     const rightArrowHandler = () => {
         dispatchMealsReducer({type: "RIGHT"})
@@ -53,19 +53,16 @@ const Summary = () => {
 
     return <BasicContainer>
         <div className={classes.navigationBar}>
-            <ArrowButton direction="left" iconSize={iconSize} onClick={leftArrowHandler}/>
+            <ArrowButton direction="left" iconSize={iconSize} onClick={leftArrowHandler} className={classes.arrowDiv}/>
             <h1>{days[mealsState.currentIndex]}</h1>
-            <ArrowButton iconSize={iconSize} onClick={rightArrowHandler}/>
+            <ArrowButton iconSize={iconSize} onClick={rightArrowHandler} className={classes.arrowDiv}/>
         </div>
-        <div className={classes.mealsContainer}>
-            <ul>
+        <ul className={classes.mealsContainer}>
             {mealsArray.map(meal => {
-                return <li key={meal[0]}><SummaryArticle mealID={meal[1]}/></li>
+                return <li key={meal[0]}><SummaryArticle mealID={meal[1]} dayTime={meal[0]}/></li>
             })
             })
-            </ul>
-        </div>
-
+        </ul>
     </BasicContainer>
 }
 

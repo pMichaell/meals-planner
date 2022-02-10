@@ -13,7 +13,7 @@ const DayPicker = () => {
     const navigate = useNavigate();
 
     const arrowClickHandler = () => {
-        navigate()
+        navigate("./summary")
     }
 
     let headerContents = allChosen ? "Submit your new plan!" : "Pick meals for each of the days!"
@@ -33,7 +33,6 @@ const DayPicker = () => {
         </div>
         {allChosen &&
         <ArrowButton onClick={arrowClickHandler} iconSize={iconSize} className={classes.arrow}/>}
-
     </BasicContainer>
 }
 

@@ -21,8 +21,8 @@ const useFetchMealId = (ID) => {
             try {
                 const response = await axios.request(options);
                 let meal = {};
-                meal.strMeal = response.data[0].strMeal;
-                meal.strMealThumb = response.data[0].strMealThumb;
+                meal.strMeal = response.data.meals[0].strMeal;
+                meal.strMealThumb = response.data.meals[0].strMealThumb;
                 setMealData(meal);
             }
             catch (error) {

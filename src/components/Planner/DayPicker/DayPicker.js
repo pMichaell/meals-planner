@@ -5,13 +5,15 @@ import useChosenMeals from "../../../hooks/use-chosen-meals";
 import Icon from "../../../ui/Icon/Icon";
 import useIconSize from "../../../hooks/use-icon-size";
 import ArrowButton from "../../../ui/ArrowButton/ArrowButton";
+import {useNavigate} from "react-router-dom";
 
 const DayPicker = () => {
     const [chosenMeals, allChosen] = useChosenMeals()
     const iconSize = useIconSize("3x", "4x");
+    const navigate = useNavigate();
 
     const arrowClickHandler = () => {
-
+        navigate()
     }
 
     let headerContents = allChosen ? "Submit your new plan!" : "Pick meals for each of the days!"

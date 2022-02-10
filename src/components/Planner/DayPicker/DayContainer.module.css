@@ -10,14 +10,54 @@
 }
 
 .dayContainer {
-    width: 60%;
+    width: 50%;
     display: flex;
-    justify-content: space-between;
+    justify-content: center;
     padding: 0 0.8rem;
     outline: none;
 }
 
-.header {
-    color: white;
+.containerChosen {
+    justify-content: space-between;
 }
 
+@media (hover: hover) {
+    .dayContainer {
+        transition: transform .6s ease;
+    }
+
+    .dayContainer:hover {
+        transform: scale(1.1);
+    }
+}
+
+@media (min-width: 500px) {
+    .dayContainer {
+        padding: 0 1rem;
+    }
+}
+
+
+@media (min-width: 700px) {
+    .dayContainer {
+        width: 35%;
+        height: 4rem;
+        transition: transform .6s ease;
+    }
+
+    .header {
+        font-size: 1.8rem;
+    }
+}
+
+@media (min-width: 1200px) {
+     .dayContainer {
+         width: 20%;
+         padding: 0 1.5rem;
+         height: 5rem;
+     }
+
+    .header {
+        font-size: 2.1rem;
+    }
+}

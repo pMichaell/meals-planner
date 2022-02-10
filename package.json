@@ -21,6 +21,7 @@
     "react-dom": "^17.0.2",
     "react-firebase-hooks": "^5.0.2",
     "react-hook-form": "^7.22.5",
+    "react-horizontal-scrolling-menu": "^2.7.0",
     "react-router-dom": "^6.2.1",
     "react-scripts": "5.0.0",
     "react-toastify": "^8.1.0",

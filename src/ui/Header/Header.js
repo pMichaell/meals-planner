@@ -9,7 +9,6 @@ import {useDispatch, useSelector} from "react-redux";
 import {auth} from "../../firebase/firebase";
 import {signOut} from "firebase/auth"
 import {useAuthState} from "react-firebase-hooks/auth";
-import {useCookies} from "react-cookie";
 
 const Header = () => {
     const sideMenuVisible = useSelector(selectSideMenu);

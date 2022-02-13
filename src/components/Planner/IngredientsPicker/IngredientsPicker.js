@@ -4,9 +4,8 @@ import {useEffect, useState} from "react";
 import {useNavigate, useParams, useSearchParams} from "react-router-dom";
 import PickedIngredients from "./PickedIngredients";
 import SearchBar from "../../SearchBar/SearchBar";
-import {getAllIngredients, submitPickedIngredients} from "../../../firebase/firestore-functions";
+import {getAllIngredients} from "../../../firebase/firestore-functions";
 import Spinner from "../../../ui/Spinner/Spinner";
-import {useCookies} from "react-cookie";
 
 
 const IngredientsPicker = () => {

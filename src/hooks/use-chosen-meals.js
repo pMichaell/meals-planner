@@ -42,13 +42,13 @@ const mealsReducer = (state, action) => {
 
 
 const useChosenMeals = (dayToCheck = "monday") => {
-    const [cookies] = useCookies(['plan']);
     const [chosenMeals, setChosenMeals] = useState({breakfast: false, dinner: false, supper: false})
     const [allChosen, setAllChosen] = useState(true);
 
     useEffect(() => {
+        const localStorageMeals = JSON.parse(localStorage.getItem("plan"));
         const checkIfChosen = () => {
-            let plan = {...cookies.plan};
+            let plan = {...localStorageMeals};
             for (let [day, meals] of Object.entries(plan)) {
                 if (day === dayToCheck) {
                     for (let daytime of Object.keys(meals)) {
@@ -68,7 +68,7 @@ const useChosenMeals = (dayToCheck = "monday") => {
         }
 
         const checkIfAllChosen = () => {
-            let plan = {...cookies.plan};
+            let plan = {...localStorageMeals};
             for (let meals of Object.values(plan)) {
                 if (Object.values(meals).includes("")) {
                         setAllChosen(false);
@@ -79,7 +79,7 @@ const useChosenMeals = (dayToCheck = "monday") => {
             checkIfChosen();
             checkIfAllChosen();
 
-        }, [cookies, dayToCheck]
+        }, [dayToCheck]
     )
 
 

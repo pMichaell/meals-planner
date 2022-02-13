@@ -15,11 +15,11 @@ const MainPage = () => {
     }
 
     const createNewPlan = () => {
-        if (!cookies.plan) {
-            setCookie('plan', new Meals(), {sameSite: "lax"});
+        if (!localStorage.getItem("plan")) {
             const mealsJSON = JSON.stringify(new Meals());
+            console.log(mealsJSON);
             localStorage.setItem('plan', mealsJSON);
-            console.log("cookie created");
+            console.log("local storage field created")
         }
     }
 

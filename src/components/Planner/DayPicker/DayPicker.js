@@ -2,7 +2,6 @@ import classes from "./DayPicker.module.css"
 import BasicContainer from "../../../ui/BasicComponents/BasicContainer/BasicContainer";
 import DayContainer from "./DayContainer";
 import useChosenMeals from "../../../hooks/use-chosen-meals";
-import Icon from "../../../ui/Icon/Icon";
 import useIconSize from "../../../hooks/use-icon-size";
 import ArrowButton from "../../../ui/ArrowButton/ArrowButton";
 import {useNavigate} from "react-router-dom";

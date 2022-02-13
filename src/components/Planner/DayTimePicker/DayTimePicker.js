@@ -3,15 +3,12 @@ import {useNavigate, useParams} from "react-router-dom";
 import NavigationBar from "../../../ui/NavigationBar/NavigationBar";
 import BasicCard from "../../../ui/BasicComponents/BasicCard/BasicCard";
 import IconContainer from "../../../ui/Icon/IconContainer";
-import {useCookies} from "react-cookie";
-import {useEffect, useState} from "react";
 import useChosenMeals from "../../../hooks/use-chosen-meals";
 import Icon from "../../../ui/Icon/Icon";
 import useIconSize from "../../../hooks/use-icon-size";
 
 const DayTimePicker = () => {
     const params = useParams();
-    const [cookies] = useCookies(['plan']);
     const [chosenMeals] = useChosenMeals(params.day);
     const iconSize = useIconSize("2x", "4x");
     const navigate = useNavigate();

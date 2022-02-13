@@ -50,7 +50,7 @@ export const {setActiveUser, setUserLoggedOut} = userSlice.actions
 
 export const selectUserEmail = state => state.user.userEmail;
 
-export const selectUserLoggedIn = state => state.user.userLoggedIn;
+export const selectUserSigned = state => state.user.userLoggedIn;
 
 export const selectUserId = state => state.user.userLoggedIn;
 

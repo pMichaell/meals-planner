@@ -19,7 +19,7 @@
 
 .input {
     margin-top: 12vh;
-    width: 60%;
+    width: 75%;
     border-bottom: 2px solid white;
     padding-bottom: 0.2rem;
     font-size: 2rem;
@@ -31,4 +31,10 @@
     width: 15vmax;
     height: 7vh;
     margin-top: 5vh;
+}
+
+@media (min-width: 700px) {
+    .input {
+        width: 40%;
+    }
 }

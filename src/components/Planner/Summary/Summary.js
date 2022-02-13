@@ -73,7 +73,6 @@ const mealsReducer = (state, action) => {
 
 
 const Summary = () => {
-    const [cookies] = useCookies();
     const [mealsState, dispatchMealsReducer] = useReducer(mealsReducer, defaultMealsState);
     const iconSize = useIconSize("3x", "4x");
     const navigate = useNavigate();
@@ -81,8 +80,8 @@ const Summary = () => {
     // const mealsArray = Object.entries(cookies.plan[days[mealsState.currentIndex]]);
     const mealsFromLocalStorage = JSON.parse(localStorage.getItem("plan"));
     console.log(mealsFromLocalStorage);
-    // const mealsArray = Object.entries(mockMeals[days[mealsState.currentIndex]]);
-    const mealsArray = Object.entries(mealsFromLocalStorage[days[mealsState.currentIndex]]);
+    const mealsArray = Object.entries(mockMeals[days[mealsState.currentIndex]]);
+    // const mealsArray = Object.entries(mealsFromLocalStorage[days[mealsState.currentIndex]]);
 
     const rightArrowHandler = () => {
         dispatchMealsReducer({type: "RIGHT"})

@@ -8,3 +8,7 @@
     box-shadow: 0px 0px 32px 9px rgba(220, 224, 224, 0.39);
     transition: transform .6s ease;
 }
+
+.basic:hover {
+    transform: scale(1.1);
+}

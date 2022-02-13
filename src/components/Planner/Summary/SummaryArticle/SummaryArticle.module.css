@@ -1,16 +1,90 @@
- #articleDiv {
+.container {
+    width: 100%;
     height: 20vh;
-    width: 80%;
     display: flex;
-    align-content: space-between;
+    justify-content: space-evenly;
+    border: 2px solid white;
+    border-radius: 8px;
+    overflow: hidden;
+    margin: 1rem 0 ;
+}
+
+.container:last-of-type {
+    margin: 0;
+}
+
+.loading {
+    align-items: center;
 }
 
 .mealImg {
     object-fit: cover;
-    object-position: 50% 50%;
+    height: 100%;
+    border-right: 2px solid white;
 }
 
-h1 {
+
+
+.headersDiv {
     text-align: right;
-    font-size: 1.5rem;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-evenly;
+    flex: 1;
+}
+
+.headersDiv  h1 {
+    padding: 0;
+    border: 0;
+    text-align: center;
+    font-size: 1.2rem;
+}
+
+.headersBreak {
+    width: 100%;
+    height: 2px;
+    background-color: white;
+}
+
+.mealNameDiv {
+    padding: 0 0.4rem;
+}
+
+
+@media (min-width: 700px) {
+    .container {
+        width: 85%;
+        justify-content: space-around;
+    }
+
+    .mealImg {
+        border-left: 2px solid white;
+        flex: 1.05;
+    }
+
+    .dayTimeDiv {
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        flex: 1;
+    }
+
+    .mealNameDiv {
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        flex: 1;
+    }
+
+    .header {
+        text-align: center;
+        font-size: 1.5rem;
+    }
+}
+
+@media (min-width: 1200px) {
+    .container {
+        width: 70%;
+    }
+
 }

@@ -17,7 +17,7 @@ import Summary from "./components/Planner/Summary/Summary";
 
 function App() {
     useAuthState();
-
+    //TODO change cookies to local storage
     return (
         <Fragment>
             <Layout>

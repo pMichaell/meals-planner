@@ -17,6 +17,8 @@ const MainPage = () => {
     const createNewPlan = () => {
         if (!cookies.plan) {
             setCookie('plan', new Meals(), {sameSite: "lax"});
+            const mealsJSON = JSON.stringify(new Meals());
+            localStorage.setItem('plan', mealsJSON);
             console.log("cookie created");
         }
     }

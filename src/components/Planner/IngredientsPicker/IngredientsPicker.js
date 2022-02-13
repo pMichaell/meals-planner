@@ -14,7 +14,6 @@ const IngredientsPicker = () => {
     const [ingredients, setIngredients] = useState([]);
     const [isLoading, setIsLoading] = useState(false);
     const [searchParams] = useSearchParams();
-    const [cookies, setCookie, removeCookies] = useCookies();
     const navigate = useNavigate();
     const params = useParams();
 
@@ -31,7 +30,7 @@ const IngredientsPicker = () => {
     }, [])
 
     const submitIngredients = async() => {
-        setCookie("ingredients", pickedIngredients, {sameSite: "lax", });
+        localStorage.setItem("ingredients", JSON.stringify(pickedIngredients));
         navigate('..', { replace: true });
     }
 

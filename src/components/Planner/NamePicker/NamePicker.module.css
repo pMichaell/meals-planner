@@ -1,0 +1,34 @@
+.container {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.header {
+    text-align: center;
+}
+
+.contentsContainer {
+    flex: 1 0;
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: flex-start;
+}
+
+.input {
+    margin-top: 12vh;
+    width: 60%;
+    border-bottom: 2px solid white;
+    padding-bottom: 0.2rem;
+    font-size: 2rem;
+    text-align: center;
+}
+
+.submitButton {
+    font-size: 1.5rem;
+    width: 15vmax;
+    height: 7vh;
+    margin-top: 5vh;
+}

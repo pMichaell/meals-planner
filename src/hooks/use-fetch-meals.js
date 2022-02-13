@@ -1,11 +1,9 @@
 import {useEffect, useState} from "react";
 import axios from "axios";
-import {useCookies} from "react-cookie";
 
 const useFetchMeals = () => {
     const [isLoading, setIsLoading] = useState(false);
     const [fetchedMeals, setFetchedMeals] = useState([]);
-    const [cookies] = useCookies();
 
 
     useEffect(() => {
@@ -20,7 +18,7 @@ const useFetchMeals = () => {
     }, [])
 
     const getIngrFromCookies = () => {
-        const ingredients = cookies.ingredients;
+        let ingredients = JSON.parse(localStorage.getItem("ingredients"));
         let data = []
         ingredients.forEach(ingredient => {
             data = [...data, ingredient.strIngredient.replaceAll(" ", "_").toLowerCase()]

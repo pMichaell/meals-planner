@@ -1,11 +1,10 @@
-import Meals from "./Meals";
-
 export default class MealPlan {
-    constructor(userId) {
+    constructor(name, userId, meals, isPublic, lastEdited) {
+        this.name = name;
         this.userId = userId;
-        this.name = "";
-        this.meals = new Meals();
-        this.finished = false;
+        this.meals = meals;
+        this.isPublic = isPublic;
+        this.lastEdited = lastEdited;
     }
 
     toString() {

@@ -1,7 +1,6 @@
-import {collection, getDocs, doc, setDoc, deleteDoc, runTransaction, addDoc} from "firebase/firestore";
+import {addDoc, collection, doc, getDoc, getDocs, runTransaction, setDoc} from "firebase/firestore";
 import {database} from "./firebase";
 import {mealPlanConverter} from "./converters";
-import MealPlan from "../classes/MealPlan";
 
 export const getAllIngredients = async () => {
     const ingredientsCol = collection(database, "ingredients");
@@ -29,23 +28,17 @@ export const createUser = async (user) => {
     })
 }
 
-export const createPlan = async (userID) => {
+export const fetchUserData = async (userID) => {
+    const userRef = doc(database, "users", `${userID}`);
+    const userSnap = await getDoc(userRef);
+    if(!userSnap.exists()) return;
+    return userSnap.data();
+}
+
+
+
+export const savePlan = async (mealPlan) => {
     const ref = doc(database, "mealPlans").withConverter(mealPlanConverter);
-    await addDoc(ref, new MealPlan(userID, ""));
+    await addDoc(ref, {...mealPlan});
 }
 
-export const setMeal = async (day, dayTime, mealID) => {
-
-}
-
-export const setCurrentlyEditedPlan = async () => {
-
-}
-
-export const getCurrentlyEditedPlan = async () => {
-
-}
-
-export const deleteCurrentlyEditedPlan = async() => {
-
-}

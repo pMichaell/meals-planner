@@ -2,11 +2,14 @@ import classes from "./NamePicker.module.css"
 import BasicContainer from "../../../ui/BasicComponents/BasicContainer/BasicContainer";
 import BasicButton from "../../../ui/BasicComponents/BasicButton/BasicButton";
 import {useEffect, useRef, useState} from "react";
+import useFirestore from "../../../hooks/use-firestore";
 
 
 const NamePicker = () => {
     const inputRef = useRef(null);
+    const sliderRef = useRef(false);
     const [errorPresent, setErrorPresent] = useState(null);
+    const {createMealPlan} = useFirestore();
 
     useEffect(() => {
         inputRef.current.focus();
@@ -16,11 +19,15 @@ const NamePicker = () => {
         if(inputRef.current.value.length !== 0) setErrorPresent(false);
     }
 
-    const buttonClickHandler = () => {
+    const buttonClickHandler = async () => {
         if (inputRef.current.value.length === 0) {
         setErrorPresent(true);
         inputRef.current.focus();
+        return
         }
+        const name = inputRef.current.value;
+        const isPublic = sliderRef.current.checked;
+        await createMealPlan(name, isPublic);
     }
 
     return <BasicContainer className={classes.container}>
@@ -33,8 +40,8 @@ const NamePicker = () => {
                 <div className={classes.sliderContainer}>
                     <h4>NO</h4>
                     <div className={classes.slider}>
-                        <input type="checkbox" value="None" id="slideTwo" name="check"/>
-                        <label htmlFor="slideTwo"/>
+                        <input type="checkbox" id="slider" name="check" ref={sliderRef}/>
+                        <label htmlFor="slider"/>
                     </div>
                     <h4>YES</h4>
                 </div>

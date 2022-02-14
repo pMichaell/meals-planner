@@ -11,7 +11,7 @@ const Ingredient = props => {
         } else {
             addIngredient(props.ingredient);
         }
-
+        window.scrollTo(0, 0);
     }
 
 

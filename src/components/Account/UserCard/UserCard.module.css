@@ -1,0 +1,32 @@
+.card {
+    height: 20rem;
+    width: 20rem;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-evenly;
+    border: 2px solid white;
+    background: black;
+    overflow: hidden;
+    transition: transform .6s ease;
+    border-radius: 8px;
+}
+
+.loading {
+    justify-content: center;
+    align-items: center;
+}
+
+.card:hover {
+    transform: scale(1.13);
+}
+
+.userImg {
+    height: 90%;
+    object-fit: cover;
+    border-bottom: 2px solid white;
+}
+
+
+
+
+

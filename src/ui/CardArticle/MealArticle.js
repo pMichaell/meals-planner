@@ -1,4 +1,4 @@
-import classes from "./CardArticle.module.css"
+import classes from "./MealArticle.module.css"
 
 const MealArticle = props => {
 

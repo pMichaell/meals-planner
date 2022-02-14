@@ -40,7 +40,7 @@ const MealPicker = () => {
     }
 
     const modalButtonClickHandler = () => {
-        let plan = JSON.parse(localStorage.getItem("plan"));
+        let plan = JSON.parse(localStorage.getItem("meals"));
         for (let [day, meals] of Object.entries(plan)) {
             if (day === params.day) {
                 for (let mealName of Object.keys(meals)) {
@@ -51,7 +51,7 @@ const MealPicker = () => {
             }
         }
         // console.log(plan);
-        localStorage.setItem("plan", JSON.stringify(plan));
+        localStorage.setItem("meals", JSON.stringify(plan));
     }
 
 

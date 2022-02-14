@@ -3,7 +3,6 @@ import {Route, Routes} from "react-router-dom";
 import {Fragment} from "react";
 import MainPage from "./components/MainPage/MainPage";
 import LoginPage from "./pages/LoginPage";
-import MyAccountPage from "./pages/MyAccountPage";
 import RequireAuth from "./router/RequireAuth";
 import AboutPage from "./pages/AboutPage";
 import DayTimePicker from "./components/Planner/DayTimePicker/DayTimePicker";
@@ -13,18 +12,18 @@ import IngredientsPicker from "./components/Planner/IngredientsPicker/Ingredient
 import NamePicker from "./components/Planner/NamePicker/NamePicker";
 import useAuthState from "./hooks/use-auth-state";
 import Summary from "./components/Planner/Summary/Summary";
+import MyAccount from "./components/Account/MyAccount";
 
 
 function App() {
     useAuthState();
-    //TODO change cookies to local storage
     return (
         <Fragment>
             <Layout>
                 <Routes>
                     <Route path="/" element={<MainPage/>}/>
                     <Route path="/login" element={<LoginPage/>}/>
-                    <Route path="/account" element={<RequireAuth><MyAccountPage/></RequireAuth>}/>
+                    <Route path="/account" element={<RequireAuth><MyAccount/></RequireAuth>}/>
                     <Route path="/planner">
                         <Route index element={<RequireAuth><DayPicker/></RequireAuth>}/>
                         <Route path=":day" element={<RequireAuth><DayTimePicker/></RequireAuth>}/>

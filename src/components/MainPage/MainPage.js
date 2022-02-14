@@ -8,17 +8,16 @@ import {useCookies} from "react-cookie";
 import Meals from "../../classes/Meals";
 
 const MainPage = () => {
-    const [cookies, setCookie] = useCookies();
 
     const onClickHandler = () => {
         createNewPlan();
     }
 
     const createNewPlan = () => {
-        if (!localStorage.getItem("plan")) {
+        if (!localStorage.getItem("meals")) {
             const mealsJSON = JSON.stringify(new Meals());
             console.log(mealsJSON);
-            localStorage.setItem('plan', mealsJSON);
+            localStorage.setItem('meals', mealsJSON);
             console.log("local storage field created")
         }
     }

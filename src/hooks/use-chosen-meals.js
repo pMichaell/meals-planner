@@ -46,7 +46,7 @@ const useChosenMeals = (dayToCheck = "monday") => {
     const [allChosen, setAllChosen] = useState(true);
 
     useEffect(() => {
-        const localStorageMeals = JSON.parse(localStorage.getItem("plan"));
+        const localStorageMeals = JSON.parse(localStorage.getItem("meals"));
         const checkIfChosen = () => {
             let plan = {...localStorageMeals};
             for (let [day, meals] of Object.entries(plan)) {

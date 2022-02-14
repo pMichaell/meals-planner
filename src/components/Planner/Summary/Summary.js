@@ -8,7 +8,7 @@ import SummaryArticle from "./SummaryArticle/SummaryArticle";
 import BasicButton from "../../../ui/BasicComponents/BasicButton/BasicButton";
 import {useNavigate} from "react-router-dom";
 
-const mockMeals = {
+export const mockMeals = {
     "monday": {
         "breakfast": "52818",
         "dinner": "52765",
@@ -78,7 +78,7 @@ const Summary = () => {
     const navigate = useNavigate();
 
     // const mealsArray = Object.entries(cookies.plan[days[mealsState.currentIndex]]);
-    const mealsFromLocalStorage = JSON.parse(localStorage.getItem("plan"));
+    const mealsFromLocalStorage = JSON.parse(localStorage.getItem("meals"));
     console.log(mealsFromLocalStorage);
     const mealsArray = Object.entries(mockMeals[days[mealsState.currentIndex]]);
     // const mealsArray = Object.entries(mealsFromLocalStorage[days[mealsState.currentIndex]]);

@@ -13,10 +13,10 @@ const useAuthState = () => {
         onAuthStateChanged(auth, user => {
             if (user) {
                 dispatch(setActiveUser(
-                    {userEmail: user.email, userUid: user.uid}));
+                    {userUid: user.uid}));
                 createUser(user);
             } else {
-                localStorage.removeItem("plan")
+                localStorage.removeItem("meals")
                 dispatch(setUserLoggedOut());
             }
         })

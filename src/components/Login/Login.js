@@ -83,11 +83,12 @@ const Login = () => {
     );
 
     const onSubmit = data => {
+        const email = data.email.toLowerCase();
         if (isSignIn) {
-            signInHandler(data.email, data.password);
+            signInHandler(email, data.password);
             return;
         }
-        signUpHandler(data.email, data.password)
+        signUpHandler(email, data.password)
     }
 
     return (
@@ -114,7 +115,7 @@ const Login = () => {
                     })}
                 />
                 <div className={classes.formErrorContainer}>
-                    <ErrorMessage 
+                    <ErrorMessage
                         errors={errors} name="password"
                         render={({message}) => <span className={classes.formErrorMessage}>{message}</span>}/>
                 </div>

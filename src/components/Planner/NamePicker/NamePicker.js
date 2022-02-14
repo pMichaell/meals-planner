@@ -28,6 +28,17 @@ const NamePicker = () => {
         <div className={classes.contentsContainer}>
             <input type="text" ref={inputRef} onChange={inputChangeHandler} className={classes.input}/>
             {errorPresent && <p>Plan name can't be empty!</p>}
+            <div className={classes.publishContainer}>
+                <h3>Would you like to set your plan as public?</h3><input className={classes.checkBox} type="checkbox"/>
+                <div className={classes.sliderContainer}>
+                    <h4>NO</h4>
+                    <div className={classes.slider}>
+                        <input type="checkbox" value="None" id="slideTwo" name="check"/>
+                        <label htmlFor="slideTwo"/>
+                    </div>
+                    <h4>YES</h4>
+                </div>
+            </div>
             <BasicButton className={classes.submitButton} onClick={buttonClickHandler}>Submit</BasicButton>
         </div>
     </BasicContainer>

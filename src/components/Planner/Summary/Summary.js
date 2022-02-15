@@ -54,15 +54,16 @@ const defaultMealsState = {
 
 const mealsReducer = (state, action) => {
     let newIndex
+    let newLength = --action.length;
     if(action.type === "RIGHT") {
-        newIndex = state.currentIndex === 6 ? 0 : ++state.currentIndex;
+        newIndex = state.currentIndex === newLength ? 0 : ++state.currentIndex;
         console.log(newIndex)
         return {
             currentIndex: newIndex,
         }
     }
     if (action.type === "LEFT") {
-        newIndex = state.currentIndex === 0 ? 6 : --state.currentIndex;
+        newIndex = state.currentIndex === 0 ? newLength : --state.currentIndex;
         console.log(newIndex)
         return {
             currentIndex: newIndex,
@@ -78,17 +79,19 @@ const Summary = () => {
     const navigate = useNavigate();
 
     // const mealsArray = Object.entries(cookies.plan[days[mealsState.currentIndex]]);
-    const mealsFromLocalStorage = JSON.parse(localStorage.getItem("meals"));
-    console.log(mealsFromLocalStorage);
+    // const mealsFromLocalStorage = JSON.parse(localStorage.getItem("meals"));
+    // console.log(mealsFromLocalStorage);
+    // const navBarDataSet = Object.keys(mockMeals);
+    // console.log(navBarDataSet)
     const mealsArray = Object.entries(mockMeals[days[mealsState.currentIndex]]);
     // const mealsArray = Object.entries(mealsFromLocalStorage[days[mealsState.currentIndex]]);
 
     const rightArrowHandler = () => {
-        dispatchMealsReducer({type: "RIGHT"})
+        dispatchMealsReducer({type: "RIGHT", length: days.length})
     }
 
     const leftArrowHandler = () => {
-        dispatchMealsReducer({type: "LEFT"})
+        dispatchMealsReducer({type: "LEFT", length: days.length})
     }
 
     const submitButtonHandler = () => {

@@ -3,7 +3,7 @@ import MealPlan from "../classes/MealPlan";
 export const mealPlanConverter = {
     toFirestore: (mealPlan) => {
         return {
-            userId: mealPlan.userId,
+            userID: mealPlan.userID,
             name: mealPlan.name,
             meals: mealPlan.meals,
             isPublic: mealPlan.isPublic,
@@ -12,6 +12,6 @@ export const mealPlanConverter = {
     },
     fromFirestore: (snapshot, options) => {
         const data = snapshot.data(options);
-        return new MealPlan(data.userId, data.name, data.meals, data.isPublic, data.lastEdited);
+        return new MealPlan(data.name, data.userID, data.meals, data.isPublic, data.lastEdited);
     }
 };

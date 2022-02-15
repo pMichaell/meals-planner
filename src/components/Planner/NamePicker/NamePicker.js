@@ -2,14 +2,17 @@ import classes from "./NamePicker.module.css"
 import BasicContainer from "../../../ui/BasicComponents/BasicContainer/BasicContainer";
 import BasicButton from "../../../ui/BasicComponents/BasicButton/BasicButton";
 import {useEffect, useRef, useState} from "react";
-import useFirestore from "../../../hooks/use-firestore";
+import {createMealPlan} from "../../../firebase/firestore-functions";
+import {useSelector} from "react-redux";
+import {selectUserId} from "../../../store/userSlice";
+import {mockMeals} from "../Summary/Summary";
 
 
 const NamePicker = () => {
     const inputRef = useRef(null);
     const sliderRef = useRef(false);
+    const userID = useSelector(selectUserId);
     const [errorPresent, setErrorPresent] = useState(null);
-    const {createMealPlan} = useFirestore();
 
     useEffect(() => {
         inputRef.current.focus();
@@ -27,7 +30,7 @@ const NamePicker = () => {
         }
         const name = inputRef.current.value;
         const isPublic = sliderRef.current.checked;
-        await createMealPlan(name, isPublic);
+        await createMealPlan(name, userID, mockMeals, isPublic);
     }
 
     return <BasicContainer className={classes.container}>

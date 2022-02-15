@@ -1,9 +1,30 @@
 .container {
-    display: grid;
-    place-items: center;
+    height: 100%;
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: space-evenly;
+    padding: 1rem;
+}
+
+.loading {
+    justify-content: center;
 }
 
 .email {
     color: white;
 }
 
+.plansContainer {
+    display: flex;
+    flex-direction: column;
+    flex: 1 0;
+    width: 90%;
+    border: 2px solid white;
+    border-radius: 8px;
+}
+
+.headerDiv {
+    padding: 0.3rem 0;
+}

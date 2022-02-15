@@ -1,9 +1,9 @@
 .card {
-    height: 20rem;
-    width: 20rem;
+    margin: 0 1rem 0.5rem;
+    height: 10rem;
+    width: 10rem;
     display: flex;
     flex-direction: column;
-    justify-content: space-evenly;
     border: 2px solid white;
     background: black;
     overflow: hidden;
@@ -16,15 +16,29 @@
     align-items: center;
 }
 
+.spinner {
+    margin: 0;
+    padding: 0;
+}
+
 .card:hover {
     transform: scale(1.13);
 }
 
 .userImg {
-    height: 90%;
     object-fit: cover;
     border-bottom: 2px solid white;
+    height: 80%;
 }
+
+.headerContainer {
+    height: 20%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+
 
 
 

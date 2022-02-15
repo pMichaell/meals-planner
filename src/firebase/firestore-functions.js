@@ -1,6 +1,18 @@
-import {addDoc, collection, doc, getDoc, getDocs, runTransaction, setDoc} from "firebase/firestore";
+import {
+    addDoc,
+    collection,
+    doc,
+    getDoc,
+    getDocs,
+    query,
+    runTransaction,
+    setDoc,
+    Timestamp,
+    where
+} from "firebase/firestore";
 import {database} from "./firebase";
 import {mealPlanConverter} from "./converters";
+import MealPlan from "../classes/MealPlan";
 
 export const getAllIngredients = async () => {
     const ingredientsCol = collection(database, "ingredients");
@@ -24,17 +36,34 @@ export const createUser = async (user) => {
     await runTransaction(database, async (transaction) => {
         const userDoc = await transaction.get(userDocRef);
         if (userDoc.exists()) return;
-        await setDoc(userDocRef, { email: user.email, displayName: user.displayName, photoURL: user.photoURL});
+        await setDoc(userDocRef, {email: user.email, displayName: user.displayName, photoURL: user.photoURL});
     })
 }
 
 export const fetchUserData = async (userID) => {
     const userRef = doc(database, "users", `${userID}`);
     const userSnap = await getDoc(userRef);
-    if(!userSnap.exists()) return;
+    if (!userSnap.exists()) return;
     return userSnap.data();
 }
 
+export const createMealPlan = async (name, userID, currentMealPlan, isPublic) => {
+    const mealPlan = new MealPlan(name, userID, currentMealPlan, isPublic, Timestamp.now());
+    const newMealPlanRef = doc(collection(database, "mealPlans")).withConverter(mealPlanConverter);
+    await setDoc(newMealPlanRef, mealPlan);
+    localStorage.removeItem("meals");
+}
+
+export const fetchUserPlans = async (userID) => {
+    const q = query(collection(database, "mealPlans"), where("userID", "==", `${userID}`))
+        .withConverter(mealPlanConverter)
+    const querySnapshot = await getDocs(q);
+    let docs = [];
+    querySnapshot.forEach(doc => {
+        docs = [...docs, doc.data()];
+    })
+    return docs;
+}
 
 
 export const savePlan = async (mealPlan) => {

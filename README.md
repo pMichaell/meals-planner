@@ -1,6 +1,8 @@
-# My First React Project (in progress)
+# My First Big React Project (in progress)
 
 ## Techstack:
+
+### JavaScript
 
 ### React
 
